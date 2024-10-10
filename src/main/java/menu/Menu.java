@@ -5,25 +5,65 @@ import java.util.List;
 
 public class Menu {
     private String menuId;
-    private String title;
-    private String description;
-    private List<MenuSection> sections;
+    private String tieudemenu;
+    private String mota;
+    private List<LoaiMenu> loaimenu;
 
-    public Menu(String id, String title, String description) {
-        this.menuId = id;
-        this.title = title;
-        this.description = description;
-        this.sections = new ArrayList<>();
+    public String getMenuId() {
+        return menuId;
     }
 
-    public void addMenuSection(MenuSection section) {
-        sections.add(section);
+    public void setMenuId(String menuId) {
+        this.menuId = menuId;
     }
 
-    public void printMenu() {
-        System.out.println("Menu: " + title);
-        for (MenuSection section : sections) {
-            section.printMenuItems();
+    public String getTieudemenu() {
+        return tieudemenu;
+    }
+
+    public void setTieudemenu(String tieudemenu) {
+        this.tieudemenu = tieudemenu;
+    }
+
+    public String getMota() {
+        return mota;
+    }
+
+    public void setMota(String mota) {
+        this.mota = mota;
+    }
+
+    public List<LoaiMenu> getLoaimenu() {
+        return loaimenu;
+    }
+
+    public void setLoaimenu(List<LoaiMenu> loaimenu) {
+        this.loaimenu = loaimenu;
+    }
+
+    
+    
+    
+    // Khai bao menu
+    public Menu(String maMenu, String TieuDe, String mota) {
+        this.menuId = maMenu;
+        this.tieudemenu = TieuDe;
+        this.mota = mota;
+        this.loaimenu = new ArrayList<>();
+    }
+
+    
+    // Ham them loai menu
+    public void themLoaiMenu(LoaiMenu loai) {
+        loaimenu.add(loai);
+    }
+
+    
+    // Ham In Menu
+    public void inMenu() {
+        System.out.println("Menu: " + tieudemenu);
+        for (LoaiMenu loai : loaimenu) {
+            loai.inDanhSachNuoc();
         }
     }
 }

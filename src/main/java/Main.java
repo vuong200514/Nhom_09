@@ -1,65 +1,94 @@
-import account.Account;
-import constants.AccountStatus;
+import taikhoan.TaiKhoan;
+import TrangThai.TrangThaiTK;
 import menu.Menu;
-import menu.MenuItem;
-import menu.MenuSection;
+import menu.DanhSachNuoc;
+import menu.LoaiMenu;
 import order.Order;
-import person.Receptionist;
-import restaurant.Branch;
-import restaurant.Restaurant;
-import table.Table;
-import constants.TableStatus;
-
-
+import nhanvien.NhanVienOrder;
+import QuanNuoc.ChiNhanh;
+import QuanNuoc.BlackPink_Coffe;
+import ChoNgoi.Ban;
+import TrangThai.TrangThaiBan;
+import java.io.*;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    public static void main(String[] args) throws UnsupportedEncodingException {
+        System.setOut(new PrintStream(System.out, true, "UTF-8"));
+        Scanner sc = new Scanner(System.in);
+        //Tao Thuong hieu
+        BlackPink_Coffe BlackPink = new BlackPink_Coffe("My BlackPink");
+        //Tao chi nhanh chinh
+        ChiNhanh ChiNhanhChinh = new ChiNhanh("Đại Học Phenikaa", "Hà Đông");
+        BlackPink.themChiNhanh(ChiNhanhChinh);
+        
+        
+        // Menu Quản lí Chi 
+        int chon=0;
+        switch (chon){
+            case 1:{
+                System.out.println("Thêm Chi Nhánh");
+                String ten,diachi;
+                ten = sc.nextLine();
+                diachi = sc.nextLine();
+                ChiNhanh chinhanh = new ChiNhanh(ten,diachi);
+                BlackPink.themChiNhanh(chinhanh);
+                break;
+            }
+            case 2:{
+                System.out.println("Nhập tên chi nhánh cần xóa");
+                String ten;
+                ten = sc.nextLine();
+                for (ChiNhanh cn : BlackPink.getDsChiNhanh()){
+                    if(cn.getTenCN().equals(ten)){
+                        BlackPink.getDsChiNhanh().remove(cn);
+                    }
+                }
+                break;
+            }
+            default:{
+                System.out.println("Nhập sai vui lòng chọn lại");
+            }
+        }
 
-        // Create restaurant
-        Restaurant restaurant = new Restaurant("My Restaurant");
-
-        // Create branch
-        Branch mainBranch = new Branch("Main Branch", "123 Main St");
-        restaurant.addBranch(mainBranch);
-
-        // Create a menu
+        
+        // Sua tiep tu day
+        // Tao menu
         Menu menu = new Menu("1", "Main Menu", "The main menu for the restaurant");
 
-        // Create menu items
-        MenuItem burger = new MenuItem("1", "Burger", "Delicious beef burger", 10.99);
-        MenuItem pizza = new MenuItem("2", "Pizza", "Cheesy pizza with toppings", 8.99);
-        MenuItem salad = new MenuItem("3", "Salad", "Fresh garden salad", 5.99);
+        // Them nuoc vao menu
+        DanhSachNuoc burger = new DanhSachNuoc("1", "Burger", "Delicious beef burger", 10.99);
+        DanhSachNuoc pizza = new DanhSachNuoc("2", "Pizza", "Cheesy pizza with toppings", 8.99);
+        DanhSachNuoc salad = new DanhSachNuoc("3", "Salad", "Fresh garden salad", 5.99);
 
-        // Create a menu section and add items
-        MenuSection section = new MenuSection("1", "Main Dishes", "Our main dishes");
-        section.addMenuItem(burger);
-        section.addMenuItem(pizza);
-        section.addMenuItem(salad);
-        menu.addMenuSection(section);
+        // Tao menu va Loai menu
+        LoaiMenu section = new LoaiMenu("1", "Main Dishes", "Our main dishes");
+        section.themNuoc(burger);
+        section.themNuoc(pizza);
+        section.themNuoc(salad);
+        menu.themLoaiMenu(section);
 
-        // Print the menu
-        menu.printMenu();
+        // In Menu
+        menu.inMenu();
 
-        // Create a table
-        Table table1 = new Table("T1", 4, TableStatus.FREE);
-        mainBranch.addTable(table1);
+        // Tao Ban
+        Ban table1 = new Ban("T1", 4, TrangThaiBan.ConBan);
+        ChiNhanhChinh.themBan(table1);
 
-        // Create an account
-        Account account = new Account("user1", "pass123", "123 Main St", AccountStatus.ACTIVE);
+        // Tao Tai Khoan
+        TaiKhoan account = new TaiKhoan("user1", "pass123", "123 Main St", TrangThaiTK.HoatDong);
         
-        // Create a receptionist
-        Receptionist receptionist = new Receptionist("1", account, "Alice", "alice@example.com", "123456789");
+        // Them Le Tan
+        NhanVienOrder leTan = new NhanVienOrder("1", account, "Alice", "alice@example.com", "123456789");
 
-        // Create an order
+        // Tao Order
         Order order = new Order("O1");
-        order.addItem(burger);
-        order.addItem(pizza);
+        order.goiMon(burger);
+        order.goiMon(pizza);
         
-        // Print the order
+        // InOrder
         order.printOrder();
         
-        scanner.close();
+        sc.close();
     }
 }

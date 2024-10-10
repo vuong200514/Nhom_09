@@ -4,10 +4,11 @@ import menu.DanhSachNuoc;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Order {
+public class HoaDon {
     private String orderId;
-    private List<DanhSachNuoc> dsOrder;
+    private List<DanhSachNuoc> dsHoaDon;
 
+    
     public String getOrderId() {
         return orderId;
     }
@@ -16,28 +17,28 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public List<DanhSachNuoc> getDsOrder() {
-        return dsOrder;
+    public List<DanhSachNuoc> getDsHoaDon() {
+        return dsHoaDon;
     }
 
-    public void setDsOrder(List<DanhSachNuoc> dsOrder) {
-        this.dsOrder = dsOrder;
+    public void setDsHoaDon(List<DanhSachNuoc> dsHoaDon) {
+        this.dsHoaDon = dsHoaDon;
     }
 
     
     
-    public Order(String id) {
+    public HoaDon(String id) {
         this.orderId = id;
-        this.dsOrder = new ArrayList<>();
+        this.dsHoaDon = new ArrayList<>();
     }
 
-    public void goiMon(DanhSachNuoc nuoc) {
-        dsOrder.add(nuoc);
+    public void themMonHD(DanhSachNuoc nuoc) {
+        dsHoaDon.add(nuoc);
     }
 
-    public void printOrder() {
+    public void inHoaDon() {
         System.out.println("Order ID: " + orderId);
-        for (DanhSachNuoc nuoc : dsOrder) {
+        for (DanhSachNuoc nuoc : dsHoaDon) {
             System.out.println("- " + nuoc.getTenNuoc() + ": $" + nuoc.getGia());
         }
     }
