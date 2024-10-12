@@ -36,7 +36,7 @@ public class Order {
     public void printOrder() {
         System.out.println("Order ID: " + orderId);
         for (DanhSachNuoc nuoc : dsOrder) {
-            System.out.println("- " + nuoc.getTenNuoc() + ": $" + nuoc.getGia());
+            System.out.println("- " + nuoc.getTenNuoc() + ": $" + nuoc.getGiatien());
         }
     }
 }

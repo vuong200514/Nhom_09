@@ -39,7 +39,7 @@ public class HoaDon {
     public void inHoaDon() {
         System.out.println("Order ID: " + orderId);
         for (DanhSachNuoc nuoc : dsHoaDon) {
-            System.out.println("- " + nuoc.getTenNuoc() + ": $" + nuoc.getGia());
+            System.out.println("- " + nuoc.getTenNuoc() + ": $" + nuoc.getGiatien());
         }
     }
 }

@@ -7,7 +7,7 @@ public class LoaiMenu {
     private String loaimenu;
     private String tenLoaiMenu;
     private String mota;
-    private List<DanhSachNuoc> Nuoc;
+    private List<DanhSachNuoc> nuoc;
 
     public String getLoaimenu() {
         return loaimenu;
@@ -34,28 +34,24 @@ public class LoaiMenu {
     }
 
     public List<DanhSachNuoc> getNuoc() {
-        return Nuoc;
-    }
-
-    public void setNuoc(List<DanhSachNuoc> Nuoc) {
-        this.Nuoc = Nuoc;
+        return nuoc;
     }
     
     public LoaiMenu(String ma, String tieude, String mota) {
         this.loaimenu = ma;
         this.tenLoaiMenu = tieude;
         this.mota = mota;
-        this.Nuoc = new ArrayList<>();
+        this.nuoc = new ArrayList<>();
     }
 
     public void themNuoc(DanhSachNuoc nuoc) {
-        Nuoc.add(nuoc);
+        this.nuoc.add(nuoc);
     }
 
     public void inDanhSachNuoc() {
         System.out.println(tenLoaiMenu + ": " + mota);
-        for (DanhSachNuoc nuoc : Nuoc) {
-            System.out.println("- " + nuoc.getTenNuoc() + ": $" + nuoc.getGia());
+        for (DanhSachNuoc nuoc : nuoc) {
+            System.out.println("- " + nuoc.getTenNuoc() + ": $" + nuoc.getGiatien()); // Sửa gọi đến getGiatien()
         }
     }
 }
