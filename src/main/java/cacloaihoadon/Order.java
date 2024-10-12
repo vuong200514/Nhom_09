@@ -1,4 +1,4 @@
-package order;
+package cacloaihoadon;
 
 import menu.DanhSachNuoc;
 import java.util.ArrayList;
@@ -33,10 +33,19 @@ public class Order {
         dsOrder.add(nuoc);
     }
 
+    public double tinhTongTien() {
+        double tongTien = 0.0;
+        for (DanhSachNuoc nuoc : dsOrder) {
+            tongTien += nuoc.getGiatien();
+        }
+        return tongTien;
+    }
+
     public void printOrder() {
         System.out.println("Order ID: " + orderId);
         for (DanhSachNuoc nuoc : dsOrder) {
             System.out.println("- " + nuoc.getTenNuoc() + ": $" + nuoc.getGiatien());
         }
+        System.out.println("Tổng tiền: $" + tinhTongTien());
     }
 }

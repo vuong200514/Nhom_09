@@ -3,7 +3,7 @@ import TrangThai.TrangThaiTK;
 import menu.Menu;
 import menu.DanhSachNuoc;
 import menu.LoaiMenu;
-import order.Order;
+import cacloaihoadon.*;
 import nguoi.NhanVienOrder;
 import QuanNuoc.ChiNhanh;
 import QuanNuoc.BlackPink_Coffe;
@@ -11,12 +11,14 @@ import ChoNgoi.Ban;
 import TrangThai.TrangThaiBan;
 import java.io.*;
 import java.util.Scanner;
+import cacloaihoadon.Order;
 import taikhoan.TaiKhoanNhanVien;
 
 public class Main {
     public static void main(String[] args) throws UnsupportedEncodingException {
         System.setOut(new PrintStream(System.out, true, "UTF-8"));
         Scanner sc = new Scanner(System.in);
+        DoanhThu doanhThu = new DoanhThu();
         BlackPink_Coffe BlackPink = new BlackPink_Coffe("My BlackPink");
         ChiNhanh ChiNhanhChinh = new ChiNhanh("Đại Học Phenikaa", "Hà Đông");
         BlackPink.themChiNhanh(ChiNhanhChinh);
@@ -94,7 +96,7 @@ public class Main {
         menuSnack.themNuoc(snack5);
         menuphu.themLoaiMenu(menuSnack);
 
-        TaiKhoanNhanVien account = new TaiKhoanNhanVien("user1", "pass123", "123 Main St", TrangThaiTK.HoatDong);
+        TaiKhoanNhanVien account = new TaiKhoanNhanVien("user1", "pass123", "123 Main St", TrangThaiTK.Online);
         double luong = 5000.0;
         NhanVienOrder leTan = new NhanVienOrder("1", account, "Alice", "alice@example.com", "123456789", luong);
 
@@ -105,6 +107,7 @@ public class Main {
             System.out.println("2. Quản lý menu");
             System.out.println("3. Quản lý bàn");
             System.out.println("4. Tạo order mới");
+            System.out.println("5. Hiển thị doanh thu");
             System.out.println("0. Thoát");
             System.out.print("Chọn chức năng: ");
             choice = Integer.parseInt(sc.nextLine());
@@ -134,6 +137,9 @@ public class Main {
                     break;
                 case 4:
                     taoOrderMoi(sc, leTan, menuchinh);
+                    break;
+                case 5:
+                    doanhThu.hienThiDoanhThu();
                     break;
                 case 0:
                     System.out.println("Thoát chương trình quản lý.");
@@ -266,10 +272,10 @@ public class Main {
 
     public static void taoOrderMoi(Scanner sc, NhanVienOrder leTan, Menu menu) {
         System.out.println("----- Tạo Order mới -----");
-        System.out.println("Nhập ID order: ");
         while(true){
-            menu.inMenu();
+            System.out.println("Nhập ID order: ");
             String orderId = sc.nextLine();
+            menu.inMenu();
             Order order = new Order(orderId);
             System.out.println("Nhập số món muốn gọi: ");
             int soMon = Integer.parseInt(sc.nextLine());
@@ -281,11 +287,20 @@ public class Main {
                         order.goiMon(nuoc);
                     }
                 }
+                for (DanhSachNuoc nuoc : menu.getLoaimenu().get(1).getNuoc()) {
+                    if (nuoc.getTenNuoc().equals(tenMon)) {
+                        order.goiMon(nuoc);
+                    }
+                }
+                for (DanhSachNuoc nuoc : menu.getLoaimenu().get(2).getNuoc()) {
+                    if (nuoc.getTenNuoc().equals(tenMon)) {
+                        order.goiMon(nuoc);
+                    }
+                }
             }
             order.printOrder();
-            System.out.println("Xác nhận order? yes/");
-            String xacnhan;
-            xacnhan = sc.nextLine();
+            System.out.println("Xác nhận order? yes/no");
+            String xacnhan = sc.nextLine();
             if(xacnhan.equals("yes")){
                 break;
             }

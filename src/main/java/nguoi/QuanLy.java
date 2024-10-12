@@ -17,7 +17,6 @@ public class QuanLy extends NhanVien {
         System.out.println("Đã thêm nhân viên: " + nhanVien.getTen());
     }
 
-    // Phương thức xóa nhân viên
     public void xoaNhanVien(List<NhanVien> danhSachNhanVien, String maNhanVien) {
         NhanVien nhanVienXoa = null;
         for (NhanVien nv : danhSachNhanVien) {

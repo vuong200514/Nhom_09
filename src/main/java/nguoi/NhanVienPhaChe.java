@@ -1,6 +1,6 @@
 package nguoi;
 
-import order.Order;
+import cacloaihoadon.Order;
 import java.time.LocalTime;
 import taikhoan.TaiKhoan;
 
