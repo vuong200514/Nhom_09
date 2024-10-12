@@ -1,16 +1,16 @@
-package nhanvien;
+package nguoi;
 
 public abstract class Nguoi {
-    private String tenNV;
+    private String ten;
     private String email;
     private String SDT;
 
-    public String getTenNV() {
-        return tenNV;
+    public String getTen() {
+        return ten;
     }
 
-    public void setTenNV(String tenNV) {
-        this.tenNV = tenNV;
+    public void setTen(String tenNV) {
+        this.ten = tenNV;
     }
 
     public String getEmail() {
@@ -32,10 +32,9 @@ public abstract class Nguoi {
     
     
     public Nguoi(String ten, String email, String sdt) {
-        this.tenNV = ten;
+        this.ten = ten;
         this.email = email;
         this.SDT = sdt;
     }
 
 }
-    // Xong

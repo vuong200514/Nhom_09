@@ -41,10 +41,6 @@ public class Menu {
         this.loaimenu = loaimenu;
     }
 
-    
-    
-    
-    // Khai bao menu
     public Menu(String maMenu, String TieuDe, String mota) {
         this.menuId = maMenu;
         this.tieudemenu = TieuDe;
@@ -52,14 +48,10 @@ public class Menu {
         this.loaimenu = new ArrayList<>();
     }
 
-    
-    // Ham them loai menu
     public void themLoaiMenu(LoaiMenu loai) {
         loaimenu.add(loai);
     }
 
-    
-    // Ham In Menu
     public void inMenu() {
         System.out.println("Menu: " + tieudemenu);
         for (LoaiMenu loai : loaimenu) {

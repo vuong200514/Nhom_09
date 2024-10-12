@@ -8,6 +8,11 @@ public class Order {
     private String orderId;
     private List<DanhSachNuoc> dsOrder;
 
+    public Order(String id) {
+        this.orderId = id;
+        this.dsOrder = new ArrayList<>();
+    }
+
     public String getOrderId() {
         return orderId;
     }
@@ -22,13 +27,6 @@ public class Order {
 
     public void setDsOrder(List<DanhSachNuoc> dsOrder) {
         this.dsOrder = dsOrder;
-    }
-
-    
-    
-    public Order(String id) {
-        this.orderId = id;
-        this.dsOrder = new ArrayList<>();
     }
 
     public void goiMon(DanhSachNuoc nuoc) {

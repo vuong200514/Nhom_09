@@ -41,22 +41,17 @@ public class LoaiMenu {
         this.Nuoc = Nuoc;
     }
     
-    
-    
-    //Khai bao menu (Tra , Tra Sua, Sua, Caphe)
     public LoaiMenu(String ma, String tieude, String mota) {
         this.loaimenu = ma;
         this.tenLoaiMenu = tieude;
         this.mota = mota;
         this.Nuoc = new ArrayList<>();
     }
-    
-    // Them nuoc vao menu
+
     public void themNuoc(DanhSachNuoc nuoc) {
         Nuoc.add(nuoc);
     }
 
-    // In ra danh sach nuoc
     public void inDanhSachNuoc() {
         System.out.println(tenLoaiMenu + ": " + mota);
         for (DanhSachNuoc nuoc : Nuoc) {

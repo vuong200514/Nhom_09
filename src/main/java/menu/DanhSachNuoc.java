@@ -30,8 +30,6 @@ public class DanhSachNuoc {
         this.giatien = giatien;
     }
     
-    
-    //Constructor menu
     public DanhSachNuoc(String id, String tennuoc, String mota, double giatien) {
         this.menuItemId = id;
         this.tenNuoc = tennuoc;
@@ -39,7 +37,6 @@ public class DanhSachNuoc {
         this.giatien = giatien;
     }
 
-    //Ham cap nhap gia
     public void capNhapGia(double gia) {
         this.giatien = gia;
     }

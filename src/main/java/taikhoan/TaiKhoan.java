@@ -2,7 +2,7 @@ package taikhoan;
 
 import TrangThai.TrangThaiTK;
 
-public class TaiKhoan {
+public abstract class TaiKhoan {
     private String id;
     private String pass;
     private String diaChi;
@@ -40,24 +40,12 @@ public class TaiKhoan {
         this.trangThai = trangThai;
     }
 
-    
-    
-    public TaiKhoan(String id, String pass, String diachi, TrangThaiTK trangthai) {
+    public TaiKhoan(String id, String pass, String diaChi, TrangThaiTK trangThai) {
         this.id = id;
         this.pass = pass;
-        this.diaChi = diachi;
-        this.trangThai = trangthai;
+        this.diaChi = diaChi;
+        this.trangThai = trangThai;
     }
 
-    public TrangThaiTK getTrangThaiTK() {
-        return trangThai;
-    }
-
-    public void setTrangThaiTK(TrangThaiTK trangthai) {
-        this.trangThai = trangthai;
-    }
-
-    public void doiMK(String MKMOI) {
-        this.pass = MKMOI;
-    }
+    public abstract boolean dangNhap(String id, String pass);
 }

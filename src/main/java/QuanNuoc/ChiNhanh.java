@@ -39,16 +39,27 @@ public class ChiNhanh {
         this.soBan = soBan;
     }
 
-    
-    
     public void themBan(Ban ban) {
         soBan.add(ban);
+        System.out.println("Đã thêm bàn: " + ban.getMaBan());
+    }
+
+    public boolean xoaBan(String maBan) {
+        for (Ban ban : soBan) {
+            if (ban.getMaBan().equals(maBan)) {
+                soBan.remove(ban);
+                System.out.println("Đã xóa bàn: " + maBan);
+                return true;
+            }
+        }
+        System.out.println("Không tìm thấy bàn với mã: " + maBan);
+        return false;
     }
 
     public void ThongTinChiNhanh() {
-        System.out.println("Quan: " + tenChiNhanh + " at " + DiaChi);
+        System.out.println("Chi nhánh: " + tenChiNhanh + " tại " + DiaChi);
         for (Ban ban : soBan) {
-            System.out.println("ID Ban: " + ban.getMaBan());
+            System.out.println("ID Bàn: " + ban.getMaBan());
         }
     }
 
