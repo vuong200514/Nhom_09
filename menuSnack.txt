@@ -1,5 +1,5 @@
-1			Hạt Hướng Dương			Hạt hướng dương thơm ngon			20.0
-2			Bim Bim			Bim bim giòn tan			15.0
-3			Khô Bò			Khô bò cay ngon			40.0
-4			Khô Gà			Khô gà xé cay			35.0
-5			Nem Lụi			Nem lụi thơm ngon			30.0
+1;Hạt Hướng Dương;Hạt hướng dương thơm ngon;20.0
+2;Bim Bim;Bim bim giòn tan;15.0
+3;Khô Bò;Khô bò cay ngon;40.0
+4;Khô Gà;Khô gà xé cay;35.0
+5;Nem Lụi;Nem lụi thơm ngon;30.0

@@ -40,7 +40,7 @@ public class Main {
                 if(line==null){
                     break;
                 }
-                String txt[] = line.split("\\s+");
+                String txt[] = line.split(";");
                 String id = txt[0]; 
                 String name = txt[1];
                 String mota = txt[2];
@@ -60,7 +60,7 @@ public class Main {
                 if(line==null){
                     break;
                 }
-                String txt[] = line.split("\\s+");
+                String txt[] = line.split(";");
                 String id = txt[0]; 
                 String name = txt[1];
                 String mota = txt[2];
@@ -80,7 +80,7 @@ public class Main {
                 if(line==null){
                     break;
                 }
-                String txt[] = line.split("\\s+");
+                String txt[] = line.split(";");
                 String id = txt[0]; 
                 String name = txt[1];
                 String mota = txt[2];
@@ -100,7 +100,7 @@ public class Main {
                 if(line==null){
                     break;
                 }
-                String txt[] = line.split("\\s+");
+                String txt[] = line.split(";");
                 String id = txt[0]; 
                 String name = txt[1];
                 String mota = txt[2];
@@ -120,7 +120,7 @@ public class Main {
                 if(line==null){
                     break;
                 }
-                String txt[] = line.split("\\s+");
+                String txt[] = line.split(";");
                 String id = txt[0]; 
                 String name = txt[1];
                 String mota = txt[2];

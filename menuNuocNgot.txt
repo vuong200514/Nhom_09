@@ -1,5 +1,5 @@
-1			Coca			Nước ngọt Coca Cola			15.0
-2			Pepsi			Nước ngọt Pepsi			15.0
-3			7Up			Nước ngọt 7Up			15.0
-4			Mirinda			Nước ngọt Mirinda			15.0
-5			Fanta			Nước ngọt Fanta			15.0
+1;Coca;Nước ngọt Coca Cola;15.0
+2;Pepsi;Nước ngọt Pepsi;15.0
+3;7Up;Nước ngọt 7Up;15.0
+4;Mirinda;Nước ngọt Mirinda;15.0
+5;Fanta;Nước ngọt Fanta;15.0

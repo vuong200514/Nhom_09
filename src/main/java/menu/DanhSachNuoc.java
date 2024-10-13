@@ -39,7 +39,7 @@ public class DanhSachNuoc {
 
     @Override
     public String toString() {
-        return menuItemId+"\t" +tenNuoc+"\t"+moTaNuoc+"\t"+giatien;
+        return menuItemId+";" +tenNuoc+";"+moTaNuoc+";"+giatien;
     }
     
 }

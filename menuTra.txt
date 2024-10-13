@@ -1,5 +1,5 @@
-1			Trà vải 			Trà vải thơm ngon cùng vải đóng hộp			15.0
-2			Trà sữa hành			Vị hành lá thơm ngon			50.0
-3			Trà chanh			Trà chanh tươi mát			20.0
-4			Trà sữa đen đá			Vị ngọt từ sữa vị đắng từ cà phê nguyên chất			30.0
-5			Trà sữa vịt lộn			Hương thơm của trà vị béo của trứng vịt lộn			45.0
+1;Trà vải ;Trà vải thơm ngon cùng vải đóng hộp;15.0
+2;Trà sữa hành;Vị hành lá thơm ngon;50.0
+3;Trà chanh;Trà chanh tươi mát;20.0
+4;Trà sữa đen đá;Vị ngọt từ sữa vị đắng từ cà phê nguyên chất;30.0
+5;Trà sữa vịt lộn;Hương thơm của trà vị béo của trứng vịt lộn;45.0
