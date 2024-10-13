@@ -1,17 +1,30 @@
 package nguoi;
 
-import menu.DanhSachNuoc;
+import TrangThai.TrangThaiTK;
 import cacloaihoadon.Order;
-import taikhoan.TaiKhoan;
 import java.util.List;
+import menu.DanhSachNuoc;
+import taikhoan.Guest;
+import taikhoan.TaiKhoan;
 
 public class KhachHang extends Nguoi {
     private String loaiKhachHang;
     private TaiKhoan taiKhoan;
+    private TrangThaiTK trangThai;
 
-    public KhachHang(String ten, String email, String sdt, String loaiKhachHang) {
+    public KhachHang(String ten, String email, String sdt, String loaiKhachHang, TaiKhoan taiKhoan) {
         super(ten, email, sdt);
         this.loaiKhachHang = loaiKhachHang;
+        this.taiKhoan = taiKhoan;
+        this.trangThai = TrangThaiTK.Offline;
+    }
+
+    public TrangThaiTK getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(TrangThaiTK trangThai) {
+        this.trangThai = trangThai;
     }
 
     public String getLoaiKhachHang() {
@@ -32,11 +45,12 @@ public class KhachHang extends Nguoi {
     
     public boolean dangNhap(String id, String pass) {
         if (taiKhoan != null && taiKhoan.dangNhap(id, pass)) {
+            this.trangThai = TrangThaiTK.Online;
             System.out.println("Đăng nhập thành công cho khách hàng.");
             return true;
+        } else {
+            return false;
         }
-        System.out.println("Đăng nhập thất bại.");
-        return false;
     }
 
     public void goiOrder(NhanVienOrder nhanVienOrder, String orderId, List<DanhSachNuoc> dsNuoc) {

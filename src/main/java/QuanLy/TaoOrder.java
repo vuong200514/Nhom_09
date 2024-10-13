@@ -2,10 +2,12 @@ package QuanLy;
 
 import cacloaihoadon.Order;
 import cacloaihoadon.DoanhThu;
+import java.util.*;
 import nguoi.NhanVienOrder;
 import menu.Menu;
 import menu.DanhSachNuoc;
 import java.util.Scanner;
+import menu.*;
 
 public class TaoOrder {
     private DoanhThu doanhThu;
@@ -22,31 +24,51 @@ public class TaoOrder {
             menu.inMenu();
             Order order = new Order(orderId);
             System.out.println("Nhập số món muốn gọi: ");
-            int soMon = Integer.parseInt(sc.nextLine());
+            int soMon;
+
+            while (true) {
+                try {
+                    soMon = Integer.parseInt(sc.nextLine());
+                    if (soMon > 0) 
+                        break;
+                    else 
+                        System.out.println("Vui lòng nhập số lớn hơn 0.");
+                } catch (NumberFormatException e) {
+                    System.out.println("Vui lòng nhập số hợp lệ.");
+                }
+            }
+
+            List<DanhSachNuoc> allDrinks = new ArrayList<>();
+            for (LoaiMenu loai : menu.getLoaimenu()) {
+                allDrinks.addAll(loai.getNuoc());
+            }
+
             for (int i = 0; i < soMon; i++) {
-                System.out.println("Nhập tên món: ");
-                String tenMon = sc.nextLine();
-                for (DanhSachNuoc nuoc : menu.getLoaimenu().get(0).getNuoc()) {
-                    if (nuoc.getTenNuoc().equals(tenMon)) {
-                        order.goiMon(nuoc);
+                while(true){
+                    System.out.println("Nhập tên món: ");
+                    String tenMon = sc.nextLine();
+                    boolean found = false;
+
+                    for (DanhSachNuoc nuoc : allDrinks) {
+                        if (nuoc.getTenNuoc().equals(tenMon)){
+                            order.goiMon(nuoc);
+                            found = true;
+                        }
                     }
-                }
-                for (DanhSachNuoc nuoc : menu.getLoaimenu().get(1).getNuoc()) {
-                    if (nuoc.getTenNuoc().equals(tenMon)) {
-                        order.goiMon(nuoc);
+                    if (found==true){
+                        break;
                     }
-                }
-                for (DanhSachNuoc nuoc : menu.getLoaimenu().get(2).getNuoc()) {
-                    if (nuoc.getTenNuoc().equals(tenMon)) {
-                        order.goiMon(nuoc);
+                    else {
+                        System.out.println("Nhập sai tên món nhập lại");
                     }
                 }
             }
+
             order.printOrder();
             System.out.println("Xác nhận order? yes/no");
             String xacnhan = sc.nextLine();
             if(xacnhan.equals("yes")){
-                doanhThu.capNhatDoanhThu(order.tinhTongTien()); // Cập nhật doanh thu
+                doanhThu.capNhatDoanhThu(order.tinhTongTien());
                 break;
             }
             else{

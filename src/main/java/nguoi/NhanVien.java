@@ -38,16 +38,6 @@ public class NhanVien extends Nguoi {
         this.luong = luong;
     }
 
-    
-
-    public boolean dangNhap(String id, String pass) {
-        if (taiKhoan != null && taiKhoan.dangNhap(id, pass)) {
-            System.out.println("Đăng nhập thành công cho nhân viên.");
-            return true;
-        }
-        System.out.println("Đăng nhập thất bại.");
-        return false;
-    }
 
     public void linhLuong() {
     if (luong > 0) {

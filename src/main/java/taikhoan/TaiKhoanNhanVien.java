@@ -10,6 +10,11 @@ public class TaiKhoanNhanVien extends TaiKhoan {
 
     @Override
     public boolean dangNhap(String id, String pass) {
-        return this.getId().equals(id) && this.getPass().equals(pass);
+        if (this.getId().equals(id) && this.getPass().equals(pass)) {
+            System.out.println("Đăng nhập thành công với quyền Mod.");
+            return true;
+        } else {
+            return false;
+        }
     }
 }

@@ -92,51 +92,126 @@ public class Main {
         menuSnack.themNuoc(snack4);
         menuSnack.themNuoc(snack5);
         menuchinh.themLoaiMenu(menuSnack);
-
-        TaiKhoanNhanVien account = new TaiKhoanNhanVien("user1", "pass123", "123 Main St", TrangThaiTK.Online);
         double luong = 5000.0;
-        NhanVienOrder leTan = new NhanVienOrder("1", account, "Alice", "alice@example.com", "123456789", luong);
+        
+        Admin admin = new Admin("admin", "123admin123", "192.168.1.1", TrangThaiTK.Offline);
+        QuanLy quanLy = new QuanLy("QL001", admin, "Nguyễn Văn A", "nguyenvana@gmail.com", "0987654321", 10000, admin);
+        TaiKhoanNhanVien nhanVien = new TaiKhoanNhanVien("mod1", "pass123", "123 Main St", TrangThaiTK.Offline);
+        NhanVienOrder leTan = new NhanVienOrder("1", nhanVien, "Nguyễn Văn Chiến", "Chienmauchien12@gmail.com", "123456789", 50000.0);
+        NhanVienPhaChe bartender = new NhanVienPhaChe("1", nhanVien, "Nguyễn Hữu Hưng", "Hungchicken12@gmail.com", "123456789", 30000.0);
+        Guest khach = new Guest("vuong2005", "hellokitty", "Ha Dong", TrangThaiTK.Offline);
+        KhachHang khachHang = new KhachHang("Nguyễn Văn B", "nguyenvanb@gmail.com", "0987654322", "Thường", khach);
 
-        int choice;
-        do {
-            System.out.println("----- Quản lý quán BlackPink Coffee -----");
-            System.out.println("1. Quản lý chi nhánh");
-            System.out.println("2. Quản lý menu");
-            System.out.println("3. Quản lý bàn");
-            System.out.println("4. Tạo order mới");
-            System.out.println("5. Hiển thị doanh thu");
-             System.out.println("6. Reset doanh thu");
-            System.out.println("0. Thoát");
-            System.out.print("Chọn chức năng: ");
-            choice = Integer.parseInt(sc.nextLine());
+        boolean isLoggedIn = false;
+        
+        while (!isLoggedIn) {
+            System.out.print("Nhập tài khoản: ");
+            String id = sc.nextLine();
+            System.out.print("Nhập mật khẩu: ");
+            String pass = sc.nextLine();
+            if (admin.dangNhap(id, pass)) {
+                isLoggedIn = true;
+                admin.setTrangThai(TrangThaiTK.Online);
+                int choice;
+                do {
+                    System.out.println("----- Quản lý quán BlackPink Coffee -----");
+                    System.out.println("1. Quản lý chi nhánh");
+                    System.out.println("2. Quản lý menu");
+                    System.out.println("3. Quản lý bàn");
+                    System.out.println("4. Hiển thị doanh thu");
+                    System.out.println("5. Reset doanh thu");
+                    System.out.println("0. Thoát");
+                    System.out.print("Chọn chức năng: ");
+                    choice = Integer.parseInt(sc.nextLine());
 
-            switch (choice) {
-                case 1:
-                    qlcn.quanLyChiNhanh(sc, BlackPink);
-                    break;
-                case 2:
-                    qlmenu.quanLyMenu(sc, menuchinh);
-                    break;
-                case 3:
-                    qlb.quanLyBan(sc, ChiNhanhChinh);
-                    break;
-                case 4:
-                    order.taoOrderMoi(sc, leTan, menuchinh);
-                    break;
-                case 5:
-                    doanhThu.hienThiDoanhThu();
-                    break;
-                case 6:
-                    doanhThu.resetDoanhThu();
-                    break;
-                case 0:
-                    System.out.println("Thoát chương trình quản lý.");
-                    break;
-                default:
-                    System.out.println("Chức năng không hợp lệ, vui lòng chọn lại.");
+                    switch (choice) {
+                        case 1:
+                            qlcn.quanLyChiNhanh(sc, BlackPink);
+                            break;
+                        case 2:
+                            qlmenu.quanLyMenu(sc, menuchinh);
+                            break;
+                        case 3:
+                            qlb.quanLyBan(sc, ChiNhanhChinh);
+                            break;
+                        case 4:
+                            doanhThu.hienThiDoanhThu();
+                            break;
+                        case 5:
+                            doanhThu.resetDoanhThu();
+                            break;
+                        case 0:
+                            admin.setTrangThai(TrangThaiTK.Offline);
+                            System.out.println("Thoát chương trình quản lý.");
+                            break;
+                        default:
+                            System.out.println("Chức năng không hợp lệ, vui lòng chọn lại.");
+                    }
+                } while (choice != 0);
             }
-        } while (choice != 0);
+            else if (nhanVien.dangNhap(id, pass)) {
+                isLoggedIn = true;
+                nhanVien.setTrangThai(TrangThaiTK.Online);
+                int choice;
+                    do {
+                        System.out.println("----- Quản lý quán BlackPink Coffee -----");
+                        System.out.println("1. Quản lý menu");
+                        System.out.println("2. Quản lý bàn");
+                        System.out.println("3. Nhận order");
+                        System.out.println("0. Thoát");
+                        System.out.print("Chọn chức năng: ");
+                        choice = Integer.parseInt(sc.nextLine());
 
+                        switch (choice) {
+                            case 1:
+                                qlmenu.quanLyMenu(sc, menuchinh);
+                                break;
+                            case 2:
+                                qlb.quanLyBan(sc, ChiNhanhChinh);
+                                break;
+                            case 3:
+                                // muốn sửa tạoorder thành nhận order
+                                order.taoOrderMoi(sc, leTan, menuchinh);
+                                break;
+                            case 0:
+                                nhanVien.setTrangThai(TrangThaiTK.Offline);
+                                System.out.println("Thoát chương trình quản lý.");
+                                break;
+                            default:
+                                System.out.println("Chức năng không hợp lệ, vui lòng chọn lại.");
+                        }
+                    } while (choice != 0);
+            }
+            else if (khachHang.dangNhap(id, pass)) {
+                isLoggedIn = true;
+                int choice;
+                    do {
+                        System.out.println("----- Chào mừng đến quán BlackPink Coffee -----");
+                        System.out.println("1. Gọi order");
+                        System.out.println("2. Gọi nhân viên");
+                        System.out.println("0. Thoát");
+                        System.out.print("Chọn chức năng: ");
+                        choice = Integer.parseInt(sc.nextLine());
+
+                        switch (choice) {
+                            case 1:
+                                order.taoOrderMoi(sc, leTan, menuchinh);
+                                break;
+                            case 2:
+                                break;
+                            case 0:
+                                khachHang.setTrangThai(TrangThaiTK.Online);
+                                System.out.println("Thoát chương trình.");
+                                break;
+                            default:
+                                System.out.println("Chức năng không hợp lệ, vui lòng chọn lại.");
+                        }
+                    } while (choice != 0);
+            }
+            else {
+                System.out.println("Thông tin đăng nhập không chính xác. Vui lòng thử lại.");
+            }
+        }
         sc.close();
     }
 }

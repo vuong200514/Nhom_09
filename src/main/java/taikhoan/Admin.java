@@ -14,7 +14,6 @@ public class Admin extends TaiKhoan {
             System.out.println("Đăng nhập thành công với quyền Admin.");
             return true;
         } else {
-            System.out.println("Đăng nhập thất bại.");
             return false;
         }
     }
