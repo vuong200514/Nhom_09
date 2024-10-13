@@ -23,11 +23,11 @@ public class Main {
         
         Menu menuchinh = new Menu("1", "Menu Chính", "Menu các loại nước");
 
-        DanhSachNuoc tra1 = new DanhSachNuoc("1", "Trà Đen", "Trà đen thơm ngon", 15.00);
-        DanhSachNuoc tra2 = new DanhSachNuoc("2", "Trà Sữa", "Trà sữa béo ngậy", 25.00);
-        DanhSachNuoc tra3 = new DanhSachNuoc("3", "Trà Chanh", "Trà chanh tươi mát", 20.00);
-        DanhSachNuoc tra4 = new DanhSachNuoc("4", "Trà Hoa Cúc", "Trà hoa cúc thanh nhẹ", 18.00);
-        DanhSachNuoc tra5 = new DanhSachNuoc("5", "Trà Xanh", "Trà xanh thanh mát", 22.00);
+        DanhSachNuoc tra1 = new DanhSachNuoc("1", "Trà Đen", "Trà đen thơm ngon", 15.000);
+        DanhSachNuoc tra2 = new DanhSachNuoc("2", "Trà Sữa Hành", "Vị hành lá thơm ngon", 50.000);
+        DanhSachNuoc tra3 = new DanhSachNuoc("3", "Trà Chanh", "Trà chanh tươi mát", 20.000);
+        DanhSachNuoc tra4 = new DanhSachNuoc("4", "Trà sữa đen đá", " Vị ngọt từ sữa vị đắng từ cà phê nguyên chất", 30.000);
+        DanhSachNuoc tra5 = new DanhSachNuoc("5", "Trà Sữa  Vịt Lộn", "Hương thơm của trà vị béo của trứng vịt lộn", 45.000);
         
         LoaiMenu menuTra = new LoaiMenu("1", "Trà", "Các loại trà ngon");
         menuTra.themNuoc(tra1);
@@ -37,11 +37,11 @@ public class Main {
         menuTra.themNuoc(tra5);
         menuchinh.themLoaiMenu(menuTra);
 
-        DanhSachNuoc coffee1 = new DanhSachNuoc("1", "Cà Phê Đen", "Cà phê đen nguyên chất", 20.00);
-        DanhSachNuoc coffee2 = new DanhSachNuoc("2", "Cà Phê Sữa", "Cà phê sữa thơm ngậy", 25.00);
-        DanhSachNuoc coffee3 = new DanhSachNuoc("3", "Cà Phê Mocha", "Cà phê mocha ngọt ngào", 30.00);
-        DanhSachNuoc coffee4 = new DanhSachNuoc("4", "Cà Phê Trứng", "Cà phê trứng béo ngậy", 35.00);
-        DanhSachNuoc coffee5 = new DanhSachNuoc("5", "Cà Phê Nóng", "Cà phê nóng ấm lòng", 18.00);
+        DanhSachNuoc coffee1 = new DanhSachNuoc("1", "Cà Phê Đen", "Cà phê đen nguyên chất", 20.000);
+        DanhSachNuoc coffee2 = new DanhSachNuoc("2", "Cà Phê Sữa", "Cà phê sữa thơm ngậy", 25.000);
+        DanhSachNuoc coffee3 = new DanhSachNuoc("3", "Cà Phê Mocha", "Cà phê mocha ngọt ngào", 30.000);
+        DanhSachNuoc coffee4 = new DanhSachNuoc("4", "Cà Phê Trứng", "Cà phê trứng béo ngậy", 35.000);
+        DanhSachNuoc coffee5 = new DanhSachNuoc("5", "Cà Phê Nóng", "Cà phê nóng ấm lòng", 18.000);
 
         LoaiMenu menuCoffee = new LoaiMenu("2", "Cà phê", "Các loại cà phê thơm ngon");
         menuCoffee.themNuoc(coffee1);
@@ -51,11 +51,11 @@ public class Main {
         menuCoffee.themNuoc(coffee5);
         menuchinh.themLoaiMenu(menuCoffee);
 
-        DanhSachNuoc sinhTo1 = new DanhSachNuoc("1", "Sinh Tố Bơ", "Sinh tố bơ mịn màng", 30.00);
-        DanhSachNuoc sinhTo2 = new DanhSachNuoc("2", "Sinh Tố Dâu", "Sinh tố dâu ngọt ngào", 28.00);
-        DanhSachNuoc sinhTo3 = new DanhSachNuoc("3", "Sinh Tố Xoài", "Sinh tố xoài thơm ngon", 32.00);
-        DanhSachNuoc sinhTo4 = new DanhSachNuoc("4", "Sinh Tố Đu Đủ", "Sinh tố đu đủ tươi", 25.00);
-        DanhSachNuoc sinhTo5 = new DanhSachNuoc("5", "Trái Cây Tươi", "Đĩa trái cây tươi mát", 35.00);
+        DanhSachNuoc sinhTo1 = new DanhSachNuoc("1", "Sinh Tố Bơ", "Sinh tố bơ mịn màng", 30.000);
+        DanhSachNuoc sinhTo2 = new DanhSachNuoc("2", "Sinh Tố Dâu", "Sinh tố dâu ngọt ngào", 28.000);
+        DanhSachNuoc sinhTo3 = new DanhSachNuoc("3", "Sinh Tố Xoài", "Sinh tố xoài thơm ngon", 32.000);
+        DanhSachNuoc sinhTo4 = new DanhSachNuoc("4", "Sinh Tố Đu Đủ", "Sinh tố đu đủ tươi", 25.000);
+        DanhSachNuoc sinhTo5 = new DanhSachNuoc("5", "Trái Cây Tươi", "Đĩa trái cây tươi mát", 35.000);
 
         LoaiMenu menuSinhTo = new LoaiMenu("3", "Sinh Tố và Trái Cây", "Các loại sinh tố và trái cây");
         menuSinhTo.themNuoc(sinhTo1);
