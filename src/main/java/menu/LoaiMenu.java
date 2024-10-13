@@ -48,6 +48,10 @@ public class LoaiMenu {
         this.nuoc.add(nuoc);
     }
 
+    public List<DanhSachNuoc> getDanhSachNuoc() {
+        return this.nuoc;
+    }
+    
     public void inDanhSachNuoc() {
         System.out.println(tenLoaiMenu + ": " + mota);
         for (DanhSachNuoc nuoc : nuoc) {

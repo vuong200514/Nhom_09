@@ -36,4 +36,10 @@ public class DanhSachNuoc {
             System.out.println("Giá phải lớn hơn hoặc bằng 0");
         }
     }
+
+    @Override
+    public String toString() {
+        return menuItemId+"\t" +tenNuoc+"\t"+moTaNuoc+"\t"+giatien;
+    }
+    
 }

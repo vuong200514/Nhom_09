@@ -16,7 +16,7 @@ public class LayDuLieu {
             String line;
             if ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
-                loaiMenu = new LoaiMenu(parts[0], parts[1], parts[2]); // ID, Tên, Mô tả
+                loaiMenu = new LoaiMenu(parts[0], parts[1], parts[2]);
             }
 
             while ((line = br.readLine()) != null) {

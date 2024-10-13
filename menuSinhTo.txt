@@ -1,0 +1,5 @@
+1			Sinh Tố Bơ			Sinh tố bơ mịn màng			30.0
+2			Sinh Tố Dâu			Sinh tố dâu ngọt ngào			28.0
+3			Sinh Tố Xoài			Sinh tố xoài thơm ngon			32.0
+4			Sinh Tố Đu Đủ			Sinh tố đu đủ tươi			25.0
+5			Trái Cây Tươi			Đĩa trái cây tươi mát			35.0
