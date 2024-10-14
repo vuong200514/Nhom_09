@@ -2,7 +2,7 @@ package nguoi;
 
 import taikhoan.TaiKhoan;
 import taikhoan.Admin;
-import java.util.List;
+import java.util.*;
 
 public class QuanLy extends NhanVien {
     private Admin taiKhoanAdmin;
@@ -35,7 +35,12 @@ public class QuanLy extends NhanVien {
     }
 
     public void tinhLuongChoNhanVien(List<NhanVien> danhSachNhanVien) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Nhập số ngày làm việc:");
+        int ngaylam = sc.nextInt();
+        System.out.println("Nhập thưởng:");
+        double thuong = sc.nextDouble();
         TinhLuong tinhLuong = new TinhLuong(danhSachNhanVien);
-        tinhLuong.tinhLuong();
+        tinhLuong.tinhLuong(ngaylam, thuong);
     }
 }

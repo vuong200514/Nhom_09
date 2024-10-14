@@ -9,9 +9,11 @@ public class TinhLuong {
         this.danhSachNhanVien = danhSachNhanVien;
     }
 
-    public void tinhLuong() {
+    public void tinhLuong(int ngaylamviec, double thuong) {
         for (NhanVien nhanVien : danhSachNhanVien) {
-            System.out.println("Tính lương cho nhân viên: " + nhanVien.getTen() + ", Lương: " + nhanVien.getLuong());
+            double luongCuoi = nhanVien.getLuong() * ngaylamviec + thuong;
+            System.out.println("Tính lương cho nhân viên: " + nhanVien.getTen() + 
+                               ", Lương cuối: " + luongCuoi);
         }
     }
 }

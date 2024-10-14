@@ -38,4 +38,23 @@ public class LayDuLieu {
             docDuLieuNuoc(fileNames[i], danhSachLoaiMenu.get(i));
         }
     }
+    
+    public void docLoaiMenu(String fileName, List<LoaiMenu> danhSachLoaiMenu) {
+        try {
+            FileReader fr = new FileReader(fileName);
+            BufferedReader br = new BufferedReader(fr);
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] txt = line.split(";");
+                String id = txt[0];
+                String name = txt[1];
+                String mota = txt[2];
+                LoaiMenu loaiMenu = new LoaiMenu(id, name, mota);
+                danhSachLoaiMenu.add(loaiMenu);
+            }
+            br.close();
+        } catch (Exception e) {
+            System.out.println("Có lỗi khi đọc file: " + fileName);
+        }
+    }
 }

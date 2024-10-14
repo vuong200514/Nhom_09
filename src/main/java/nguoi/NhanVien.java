@@ -5,7 +5,7 @@ import taikhoan.TaiKhoan;
 public class NhanVien extends Nguoi {
     private String maNhanVien;
     private TaiKhoan taiKhoan;
-    double luong;
+    private double luong;
 
     public NhanVien(String maNV, TaiKhoan TK, String tenNV, String email, String SDT, double luong) {
         super(tenNV, email, SDT);
@@ -38,14 +38,13 @@ public class NhanVien extends Nguoi {
         this.luong = luong;
     }
 
-
     public void linhLuong() {
-    if (luong > 0) {
-        System.out.println("Nhân viên " + super.getTen() + " đã lĩnh lương: " + luong);
-        taiKhoan.setPass("0");
-        luong = 0;
-    } else {
-        System.out.println("Nhân viên " + super.getTen() + " đã lĩnh lương hoặc chưa có lương.");
+        if (luong > 0) {
+            System.out.println("Nhân viên " + super.getTen() + " đã lĩnh lương: " + luong);
+            taiKhoan.setPass("0");
+            luong = 0;
+        } else {
+            System.out.println("Nhân viên " + super.getTen() + " đã lĩnh lương hoặc chưa có lương.");
+        }
     }
-}
 }

@@ -30,7 +30,7 @@ public class Main {
         LoaiMenu menuSinhTo = new LoaiMenu("3", "Sinh Tố và Trái Cây", "Các loại sinh tố và trái cây");
         LoaiMenu menuNuocNgot = new LoaiMenu("4", "Nước Ngọt Đóng Chai", "Các loại nước ngọt đóng chai");
         LoaiMenu menuSnack = new LoaiMenu("5", "Đồ Ăn Vặt", "Các loại đồ ăn vặt");
-        
+
         List<LoaiMenu> danhSachLoaiMenu = new ArrayList<>();
         danhSachLoaiMenu.add(menuTra);
         danhSachLoaiMenu.add(menuCoffee);
@@ -50,12 +50,15 @@ public class Main {
         //Tai khoan nhan vien + quan ly nhan vien
         double luong = 5000.0;
         Admin admin = new Admin("admin", "123admin123", "192.168.1.1", TrangThaiTK.Offline);
-        QuanLy quanLy = new QuanLy("QL001", admin, "Nguyễn Văn A", "nguyenvana@gmail.com", "0987654321", 10000, admin);
+        QuanLy quanLy = new QuanLy("Owner", admin, "Đào Mạnh Vương", "vuong200514@gmail.com", "0987654321", 100000000, admin);
         TaiKhoanNhanVien nhanVien = new TaiKhoanNhanVien("mod1", "pass123", "123 Main St", TrangThaiTK.Offline);
+        ArrayList<NhanVien> danhSachNhanVien = new ArrayList();
         NhanVienOrder leTan = new NhanVienOrder("1", nhanVien, "Nguyễn Văn Chiến", "Chienmauchien12@gmail.com", "123456789", 50000.0);
         NhanVienPhaChe bartender = new NhanVienPhaChe("1", nhanVien, "Nguyễn Hữu Hưng", "Hungchicken12@gmail.com", "123456789", 30000.0);
+        danhSachNhanVien.add(leTan);
+        danhSachNhanVien.add(bartender);
         Guest khach = new Guest("vuong2005", "hellokitty", "Ha Dong", TrangThaiTK.Offline);
-        KhachHang khachHang = new KhachHang("Nguyễn Văn B", "nguyenvanb@gmail.com", "0987654322", "Thường", khach);
+        KhachHang khachHang = new KhachHang("Nguyễn Hữu Hiển", "nnhien05@gmail.com", "0987654322", "VIP", khach);
 
         // Dang nhap tai khoan
         boolean isLoggedIn = false;
@@ -75,6 +78,7 @@ public class Main {
                     System.out.println("3. Quản lý bàn");
                     System.out.println("4. Hiển thị doanh thu");
                     System.out.println("5. Reset doanh thu");
+                    System.out.println("6. Tính lương cho nhân ");
                     System.out.println("0. Thoát");
                     System.out.print("Chọn chức năng: ");
                     choice = Integer.parseInt(sc.nextLine());
@@ -95,6 +99,9 @@ public class Main {
                         case 5:
                             doanhThu.resetDoanhThu();
                             break;
+                        case 6:
+                            quanLy.tinhLuongChoNhanVien(danhSachNhanVien);
+                            break;
                         case 0:
                             admin.setTrangThai(TrangThaiTK.Offline);
                             System.out.println("Thoát chương trình quản lý.");
@@ -113,6 +120,7 @@ public class Main {
                         System.out.println("1. Quản lý menu");
                         System.out.println("2. Quản lý bàn");
                         System.out.println("3. Nhận order");
+                        System.out.println("4. Nhận lương");
                         System.out.println("0. Thoát");
                         System.out.print("Chọn chức năng: ");
                         choice = Integer.parseInt(sc.nextLine());
@@ -125,8 +133,12 @@ public class Main {
                                 qlb.quanLyBan(sc, ChiNhanhChinh);
                                 break;
                             case 3:
-                                // muốn sửa tạoorder thành nhận order
                                 order.taoOrderMoi(sc, leTan, menuchinh);
+                                break;
+                            case 4:
+                                for (NhanVien nhanVienItem : danhSachNhanVien) {
+                                    nhanVienItem.linhLuong();
+                                }
                                 break;
                             case 0:
                                 nhanVien.setTrangThai(TrangThaiTK.Offline);

@@ -1,0 +1,5 @@
+1;Trà;Các loại trà ngon
+2;Cà phê;Các loại cà phê thơm ngon
+3;Sinh Tố và Trái Cây;Các loại sinh tố và trái cây
+4;Nước Ngọt Đóng Chai;Các loại nước ngọt đóng chai
+5;Đồ Ăn Vặt;Các loại đồ ăn vặt

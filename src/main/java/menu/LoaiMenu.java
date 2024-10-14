@@ -58,4 +58,5 @@ public class LoaiMenu {
             System.out.println("- " + nuoc.getTenNuoc() + ": $" + nuoc.getGiatien()); // Sửa gọi đến getGiatien()
         }
     }
+    
 }
