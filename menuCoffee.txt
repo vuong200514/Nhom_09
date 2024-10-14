@@ -1,0 +1,5 @@
+1;Cà Phê Đen;Cà phê đen nguyên chất;20.0
+2;Cà Phê Sữa;Cà phê sữa thơm ngậy;25.0
+3;Cà Phê Mocha;Cà phê mocha ngọt ngào;30.0
+4;Cà Phê Trứng;Cà phê trứng béo ngậy;35.0
+5;Cà Phê Nóng;Cà phê nóng ấm lòng;18.0

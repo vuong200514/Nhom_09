@@ -32,7 +32,7 @@ public class QuanLyMenu {
                     case "1":
                         menu.getLoaimenu().get(0).themNuoc(nuocMoi);
                         try{
-                            FileWriter fw = new FileWriter("menuTra.txt");
+                            FileWriter fw = new FileWriter("menuTra.txt",true);
                             BufferedWriter bw = new BufferedWriter(fw);
                             bw.newLine();
                             bw.write(nuocMoi.toString());
@@ -44,7 +44,7 @@ public class QuanLyMenu {
                     case "2":
                         menu.getLoaimenu().get(1).themNuoc(nuocMoi);
                         try{
-                            FileWriter fw = new FileWriter("menuCoffee.txt");
+                            FileWriter fw = new FileWriter("menuCoffee.txt",true);
                             BufferedWriter bw = new BufferedWriter(fw);
                             bw.newLine();
                             bw.write(nuocMoi.toString());
@@ -56,7 +56,7 @@ public class QuanLyMenu {
                     case "3":
                         menu.getLoaimenu().get(2).themNuoc(nuocMoi);
                         try{
-                            FileWriter fw = new FileWriter("menuSinhTo.txt");
+                            FileWriter fw = new FileWriter("menuSinhTo.txt",true);
                             BufferedWriter bw = new BufferedWriter(fw);
                             bw.newLine();
                             bw.write(nuocMoi.toString());
@@ -68,7 +68,7 @@ public class QuanLyMenu {
                     case "4":
                         menu.getLoaimenu().get(3).themNuoc(nuocMoi);
                         try{
-                            FileWriter fw = new FileWriter("menuNuocNgot.txt");
+                            FileWriter fw = new FileWriter("menuNuocNgot.txt",true);
                             BufferedWriter bw = new BufferedWriter(fw);
                             bw.newLine();
                             bw.write(nuocMoi.toString());
@@ -80,7 +80,7 @@ public class QuanLyMenu {
                     case "5":
                         menu.getLoaimenu().get(4).themNuoc(nuocMoi);
                         try{
-                            FileWriter fw = new FileWriter("menuSnack.txt");
+                            FileWriter fw = new FileWriter("menuSnack.txt",true);
                             BufferedWriter bw = new BufferedWriter(fw);
                             bw.newLine();
                             bw.write(nuocMoi.toString());
