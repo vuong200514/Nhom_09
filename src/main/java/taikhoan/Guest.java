@@ -9,6 +9,16 @@ public class Guest extends TaiKhoan {
         super(id, pass, null, trangThai);
         this.diaChi = diaChi;
     }
+
+    public String getDiaChi() {
+        return diaChi;
+    }
+
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
+    }
+    
+    
     
     @Override
     public boolean dangNhap(String id, String pass) {
@@ -17,13 +27,5 @@ public class Guest extends TaiKhoan {
         } else {
             return false;
         }
-    }
-
-    public String getDiaChi() {
-        return diaChi;
-    }
-
-    public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
     }
 }

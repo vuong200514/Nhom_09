@@ -7,8 +7,8 @@ import taikhoan.TaiKhoan;
 
 public class NhanVienOrder extends NhanVien {
 
-    public NhanVienOrder(String maNV, TaiKhoan TK, String tenNV, String email, String SDT, double luong) {
-        super(maNV, TK, tenNV, email, SDT, luong);
+    public NhanVienOrder(String maNV, TaiKhoan TK, String tenNV, String email, String SDT) {
+        super(maNV, TK, tenNV, email, SDT);
     }
     
 

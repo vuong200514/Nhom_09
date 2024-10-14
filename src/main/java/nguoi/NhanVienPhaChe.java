@@ -5,8 +5,8 @@ import java.time.LocalTime;
 import taikhoan.TaiKhoan;
 
 public class NhanVienPhaChe extends NhanVien {
-    public NhanVienPhaChe(String maNV, TaiKhoan TKNV, String TenNV, String email, String SDT, double luong) {
-        super(maNV, TKNV, TenNV, email, SDT, luong);
+    public NhanVienPhaChe(String maNV, TaiKhoan TKNV, String TenNV, String email, String SDT) {
+        super(maNV, TKNV, TenNV, email, SDT);
     }
 
     public void nhanOrder(Order order) {

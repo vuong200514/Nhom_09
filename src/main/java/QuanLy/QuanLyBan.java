@@ -1,13 +1,15 @@
 package QuanLy;
 
 import QuanNuoc.ChiNhanh;
-import ChoNgoi.Ban;
+import ChoNgoi.*;
+import TrangThai.LoaiChoNgoi;
 import TrangThai.TrangThaiBan;
 import java.util.Scanner;
 
 public class QuanLyBan {
 
     public void quanLyBan(Scanner sc, ChiNhanh chiNhanh) {
+        GheNgoi gheNgoi = new GheNgoi(5,LoaiChoNgoi.BinhThuong);
         System.out.println("----- Quản lý Bàn -----");
         System.out.println("1. Thêm bàn");
         System.out.println("2. Xóa bàn");
@@ -20,7 +22,7 @@ public class QuanLyBan {
                 String maBan = sc.nextLine();
                 System.out.println("Nhập sức chứa: ");
                 int sucChua = Integer.parseInt(sc.nextLine());
-                Ban banMoi = new Ban(maBan, sucChua, TrangThaiBan.ConBan);
+                Ban banMoi = new Ban(maBan, sucChua, TrangThaiBan.ConBan, gheNgoi);
                 chiNhanh.themBan(banMoi);
                 System.out.println("Thêm bàn thành công.");
                 break;

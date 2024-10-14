@@ -6,18 +6,28 @@ import java.util.*;
 
 public class QuanLy extends NhanVien {
     private Admin taiKhoanAdmin;
+    private List<NhanVien> danhSachNhanVien;
 
-    public QuanLy(String maNV, TaiKhoan TKNV, String tenNv, String email, String SDT, double luong, Admin adminTK) {
-        super(maNV, TKNV, tenNv, email, SDT, luong);
+    public QuanLy(String maNV, TaiKhoan TKNV, String tenNv, String email, String SDT, Admin adminTK) {
+        super(maNV, TKNV, tenNv, email, SDT);
         this.taiKhoanAdmin = adminTK;
     }
 
-    public void themNhanVien(List<NhanVien> danhSachNhanVien, NhanVien nhanVien) {
+    public List<NhanVien> getDanhSachNhanVien() {
+        return danhSachNhanVien;
+    }
+
+    public void setDanhSachNhanVien(List<NhanVien> danhSachNhanVien) {
+        this.danhSachNhanVien = danhSachNhanVien;
+    }
+
+
+    public void themNhanVien(NhanVien nhanVien) {
         danhSachNhanVien.add(nhanVien);
         System.out.println("Đã thêm nhân viên: " + nhanVien.getTen());
     }
 
-    public void xoaNhanVien(List<NhanVien> danhSachNhanVien, String maNhanVien) {
+    public void xoaNhanVien(String maNhanVien) {
         NhanVien nhanVienXoa = null;
         for (NhanVien nv : danhSachNhanVien) {
             if (nv.getMaNhanVien().equals(maNhanVien)) {
@@ -44,7 +54,6 @@ public class QuanLy extends NhanVien {
             System.out.println("Nhập thưởng:");
             double thuong = sc.nextDouble();
             TinhLuong tinhLuong = new TinhLuong(danhSachNhanVien);
-            tinhLuong.tinhLuong(ngaylam, thuong);
         }
         if(chon.equals("no")){
             System.out.println("Nhập số ngày làm việc:");

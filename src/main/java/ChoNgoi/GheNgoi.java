@@ -1,18 +1,19 @@
 package ChoNgoi;
 
+import ChoNgoi.Ban;
 import TrangThai.LoaiChoNgoi;
 
-public class ChoNgoi {
-    private int soCho;
+public class GheNgoi {
+    private int maGhe;
     private LoaiChoNgoi loaiChoNgoi;
 
-    public ChoNgoi(int chongoi, LoaiChoNgoi type) {
-        this.soCho = chongoi;
+    public GheNgoi(int chongoi, LoaiChoNgoi type) {
+        this.maGhe = chongoi;
         this.loaiChoNgoi = type;
     }
 
     public int getSoCho() {
-        return soCho;
+        return maGhe;
     }
 
     public LoaiChoNgoi getLoaiChoNgoi() {

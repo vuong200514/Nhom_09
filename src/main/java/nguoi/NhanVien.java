@@ -5,13 +5,13 @@ import taikhoan.TaiKhoan;
 public class NhanVien extends Nguoi {
     private String maNhanVien;
     private TaiKhoan taiKhoan;
-    private double luong;
+    private double luongCoBan=200000;
 
-    public NhanVien(String maNV, TaiKhoan TK, String tenNV, String email, String SDT, double luong) {
+    public NhanVien(String maNV, TaiKhoan TK, String tenNV, String email, String SDT) {
         super(tenNV, email, SDT);
         this.maNhanVien = maNV;
         this.taiKhoan = TK;
-        this.luong = luong;
+        this.luongCoBan = luongCoBan;
     }
 
     public String getMaNhanVien() {
@@ -30,19 +30,19 @@ public class NhanVien extends Nguoi {
         this.taiKhoan = taiKhoan;
     }
 
-    public double getLuong() {
-        return luong;
+    public double getLuongCoBan() {
+        return luongCoBan;
     }
 
     public void setLuong(double luong) {
-        this.luong = luong;
+        this.luongCoBan = luong;
     }
 
     public void linhLuong() {
-        if (luong > 0) {
-            System.out.println("Nhân viên " + super.getTen() + " đã lĩnh lương: " + luong);
+        if (luongCoBan > 0) {
+            System.out.println("Nhân viên " + super.getTen() + " đã lĩnh lương: " + luongCoBan);
             taiKhoan.setPass("0");
-            luong = 0;
+            luongCoBan = 0;
         } else {
             System.out.println("Nhân viên " + super.getTen() + " đã lĩnh lương hoặc chưa có lương.");
         }

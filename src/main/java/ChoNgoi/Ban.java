@@ -2,24 +2,27 @@ package ChoNgoi;
 
 import TrangThai.LoaiChoNgoi;
 import TrangThai.TrangThaiBan;
+import ChoNgoi.GheNgoi;
 
 public class Ban {
     private String maBan;
-    private int sucChua;
+    private int soCho;
     private TrangThaiBan trangThai;
+    private GheNgoi gheNgoi;
 
-    public Ban(String id, int succhua, TrangThaiBan trangThaiBan) {
+    public Ban(String id, int soCho, TrangThaiBan trangThaiBan, GheNgoi gheNgoi) {
         this.maBan = id;
-        this.sucChua = succhua;
+        this.soCho = soCho;
         this.trangThai = trangThaiBan;
+        this.gheNgoi = gheNgoi;
     }
 
     public String getMaBan() {
         return maBan;
     }
 
-    public int getSucChua() {
-        return sucChua;
+    public int soCho() {
+        return soCho;
     }
 
     public TrangThaiBan getTrangThaiBan() {
@@ -30,16 +33,13 @@ public class Ban {
         this.trangThai = trangThai;
     }
 
-    
-       // ham dat ban kiem tra suc chua va trang thai cua ban
-    public boolean datBan(int soCho, LoaiChoNgoi loaiChoNgoi) {
-        if (this.trangThai == TrangThaiBan.ConBan && this.sucChua >= soCho) {
-            this.trangThai = TrangThaiBan.DangSuDung;
-            System.out.println("Đặt bàn thành công. Mã bàn: " + maBan + ", Số chỗ: " + sucChua + ", Loại chỗ: " + loaiChoNgoi);
-            return true;
-        } else {
-            System.out.println("Đã hết bàn hoặc bàn không đủ chỗ. Vui lòng thử lại sau.");
-            return false;
-        }
+    public GheNgoi getGheNgoi() {
+        return gheNgoi;
     }
+
+    public void setGheNgoi(GheNgoi gheNgoi) {
+        this.gheNgoi = gheNgoi;
+    }
+    
+    
 }
