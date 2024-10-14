@@ -31,105 +31,20 @@ public class Main {
         LoaiMenu menuNuocNgot = new LoaiMenu("4", "Nước Ngọt Đóng Chai", "Các loại nước ngọt đóng chai");
         LoaiMenu menuSnack = new LoaiMenu("5", "Đồ Ăn Vặt", "Các loại đồ ăn vặt");
         
-        try {
-            FileReader fr = new FileReader("menuTra.txt");
-            BufferedReader br = new BufferedReader(fr);
-            String line = "";
-            while(true){
-                line = br.readLine();
-                if(line==null){
-                    break;
-                }
-                String txt[] = line.split(";");
-                String id = txt[0]; 
-                String name = txt[1];
-                String mota = txt[2];
-                double gia = Double.parseDouble(txt[3]);
-                DanhSachNuoc temp = new DanhSachNuoc(id,name,mota,gia);
-                menuTra.themNuoc(temp);
-            }
-        } catch (Exception e){
-        }
+        List<LoaiMenu> danhSachLoaiMenu = new ArrayList<>();
+        danhSachLoaiMenu.add(menuTra);
+        danhSachLoaiMenu.add(menuCoffee);
+        danhSachLoaiMenu.add(menuSinhTo);
+        danhSachLoaiMenu.add(menuNuocNgot);
+        danhSachLoaiMenu.add(menuSnack);
+
+        LayDuLieu layDuLieu = new LayDuLieu();
+        layDuLieu.docTatCaMenu(danhSachLoaiMenu);
+
         menuchinh.themLoaiMenu(menuTra);
-        try {
-            FileReader fr = new FileReader("menuCoffee.txt");
-            BufferedReader br = new BufferedReader(fr);
-            String line = "";
-            while(true){
-                line = br.readLine();
-                if(line==null){
-                    break;
-                }
-                String txt[] = line.split(";");
-                String id = txt[0]; 
-                String name = txt[1];
-                String mota = txt[2];
-                double gia = Double.parseDouble(txt[3]);
-                DanhSachNuoc temp = new DanhSachNuoc(id,name,mota,gia);
-                menuCoffee.themNuoc(temp);
-            }
-        } catch (Exception e){
-        }
         menuchinh.themLoaiMenu(menuCoffee);
-        try {
-            FileReader fr = new FileReader("menuSinhTo.txt");
-            BufferedReader br = new BufferedReader(fr);
-            String line = "";
-            while(true){
-                line = br.readLine();
-                if(line==null){
-                    break;
-                }
-                String txt[] = line.split(";");
-                String id = txt[0]; 
-                String name = txt[1];
-                String mota = txt[2];
-                double gia = Double.parseDouble(txt[3]);
-                DanhSachNuoc temp = new DanhSachNuoc(id,name,mota,gia);
-                menuSinhTo.themNuoc(temp);
-            }
-        } catch (Exception e){
-        }
         menuchinh.themLoaiMenu(menuSinhTo);
-        try {
-            FileReader fr = new FileReader("menuNuocNgot.txt");
-            BufferedReader br = new BufferedReader(fr);
-            String line = "";
-            while(true){
-                line = br.readLine();
-                if(line==null){
-                    break;
-                }
-                String txt[] = line.split(";");
-                String id = txt[0]; 
-                String name = txt[1];
-                String mota = txt[2];
-                double gia = Double.parseDouble(txt[3]);
-                DanhSachNuoc temp = new DanhSachNuoc(id,name,mota,gia);
-                menuNuocNgot.themNuoc(temp);
-            }
-        } catch (Exception e){
-        }
         menuchinh.themLoaiMenu(menuNuocNgot);
-        try {
-            FileReader fr = new FileReader("menuSnack.txt");
-            BufferedReader br = new BufferedReader(fr);
-            String line = "";
-            while(true){
-                line = br.readLine();
-                if(line==null){
-                    break;
-                }
-                String txt[] = line.split(";");
-                String id = txt[0]; 
-                String name = txt[1];
-                String mota = txt[2];
-                double gia = Double.parseDouble(txt[3]);
-                DanhSachNuoc temp = new DanhSachNuoc(id,name,mota,gia);
-                menuSnack.themNuoc(temp);
-            }
-        } catch (Exception e){
-        }
         menuchinh.themLoaiMenu(menuSnack);
         
         //Tai khoan nhan vien + quan ly nhan vien

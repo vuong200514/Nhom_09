@@ -34,6 +34,7 @@ public class BlackPink_Coffe {
         dsChiNhanh.add(chinhanh);
     }
 
+    // in thong tin cua cac chi nhanh
     public void ThongTinChiNhanh() {
         System.out.println("Coffe: " + tenchinhanh);
         for (ChiNhanh chinhanh : dsChiNhanh) {

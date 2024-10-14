@@ -1,6 +1,7 @@
 package QuanLy;
 
-import java.util.Scanner;
+import java.util.*;
+import java.io.*;
 import menu.Menu;
 import menu.DanhSachNuoc;
 import menu.LoaiMenu;
@@ -17,7 +18,7 @@ public class QuanLyMenu {
 
         switch (chon) {
             case 1:
-                System.out.println("Nhập loại menu\n1. Menu trà\n2. Menu cà phê\n3. Menu sinh tố");
+                System.out.println("Nhập loại menu\n1. Menu trà\n2. Menu cà phê\n3. Menu sinh tố\n4. Menu nước ngọt\n3. Menu snack");
                 String loaiMenuMoi = sc.nextLine();
                 System.out.println("Nhập tên món: ");
                 String ten = sc.nextLine();
@@ -30,12 +31,63 @@ public class QuanLyMenu {
                 switch (loaiMenuMoi) {
                     case "1":
                         menu.getLoaimenu().get(0).themNuoc(nuocMoi);
+                        try{
+                            FileWriter fw = new FileWriter("menuTra.txt");
+                            BufferedWriter bw = new BufferedWriter(fw);
+                            bw.newLine();
+                            bw.write(nuocMoi.toString());
+                            fw.close();
+                            bw.close();
+                        }catch (Exception e){
+                        }
                         break;
                     case "2":
                         menu.getLoaimenu().get(1).themNuoc(nuocMoi);
+                        try{
+                            FileWriter fw = new FileWriter("menuCoffee.txt");
+                            BufferedWriter bw = new BufferedWriter(fw);
+                            bw.newLine();
+                            bw.write(nuocMoi.toString());
+                            fw.close();
+                            bw.close();
+                        }catch (Exception e){
+                        }
                         break;
                     case "3":
                         menu.getLoaimenu().get(2).themNuoc(nuocMoi);
+                        try{
+                            FileWriter fw = new FileWriter("menuSinhTo.txt");
+                            BufferedWriter bw = new BufferedWriter(fw);
+                            bw.newLine();
+                            bw.write(nuocMoi.toString());
+                            fw.close();
+                            bw.close();
+                        }catch (Exception e){
+                        }
+                        break;
+                    case "4":
+                        menu.getLoaimenu().get(3).themNuoc(nuocMoi);
+                        try{
+                            FileWriter fw = new FileWriter("menuNuocNgot.txt");
+                            BufferedWriter bw = new BufferedWriter(fw);
+                            bw.newLine();
+                            bw.write(nuocMoi.toString());
+                            fw.close();
+                            bw.close();
+                        }catch (Exception e){
+                        }
+                        break;
+                    case "5":
+                        menu.getLoaimenu().get(4).themNuoc(nuocMoi);
+                        try{
+                            FileWriter fw = new FileWriter("menuSnack.txt");
+                            BufferedWriter bw = new BufferedWriter(fw);
+                            bw.newLine();
+                            bw.write(nuocMoi.toString());
+                            fw.close();
+                            bw.close();
+                        }catch (Exception e){
+                        }
                         break;
                     default:
                         System.out.println("Loại menu không hợp lệ.");

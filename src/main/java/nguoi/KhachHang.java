@@ -53,6 +53,7 @@ public class KhachHang extends Nguoi {
         }
     }
 
+    //goi order voi nhan vien order va co danh sach cac mon da goi
     public void goiOrder(NhanVienOrder nhanVienOrder, String orderId, List<DanhSachNuoc> dsNuoc) {
         if (nhanVienOrder != null) {
             Order order = nhanVienOrder.taoOrder(orderId, dsNuoc);

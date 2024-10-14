@@ -35,7 +35,7 @@ public class HoaDon {
     public void themMonHD(DanhSachNuoc nuoc) {
         dsHoaDon.add(nuoc);
     }
-
+    
     public void inHoaDon() {
         System.out.println("Order ID: " + orderId);
         for (DanhSachNuoc nuoc : dsHoaDon) {

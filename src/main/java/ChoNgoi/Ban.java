@@ -30,6 +30,8 @@ public class Ban {
         this.trangThai = trangThai;
     }
 
+    
+       // ham dat ban kiem tra suc chua va trang thai cua ban
     public boolean datBan(int soCho, LoaiChoNgoi loaiChoNgoi) {
         if (this.trangThai == TrangThaiBan.ConBan && this.sucChua >= soCho) {
             this.trangThai = TrangThaiBan.DangSuDung;

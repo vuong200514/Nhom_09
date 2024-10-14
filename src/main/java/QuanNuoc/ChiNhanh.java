@@ -39,11 +39,12 @@ public class ChiNhanh {
         this.soBan = soBan;
     }
 
+    // them ban vao chi nhanh
     public void themBan(Ban ban) {
         soBan.add(ban);
         System.out.println("Đã thêm bàn: " + ban.getMaBan());
     }
-
+    // xoa ban di
     public boolean xoaBan(String maBan) {
         for (Ban ban : soBan) {
             if (ban.getMaBan().equals(maBan)) {
@@ -55,7 +56,7 @@ public class ChiNhanh {
         System.out.println("Không tìm thấy bàn với mã: " + maBan);
         return false;
     }
-
+    // hien thi thong tin chi nhanh
     public void ThongTinChiNhanh() {
         System.out.println("Chi nhánh: " + tenChiNhanh + " tại " + DiaChi);
         for (Ban ban : soBan) {

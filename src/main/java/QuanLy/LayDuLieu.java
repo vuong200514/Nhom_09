@@ -2,34 +2,40 @@ package QuanLy;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
+import java.util.List;
 import menu.LoaiMenu;
 import menu.DanhSachNuoc;
 
 public class LayDuLieu {
-    private static final String DATA_FOLDER = "D:/data/";
 
-    public LoaiMenu docMenuTuFile(String tenFile) {
-        LoaiMenu loaiMenu = null;
-
-        try (BufferedReader br = new BufferedReader(new FileReader(DATA_FOLDER + tenFile))) {
+    public void docDuLieuNuoc(String fileName, LoaiMenu loaiMenu) {
+        try {
+            FileReader fr = new FileReader(fileName);
+            BufferedReader br = new BufferedReader(fr);
             String line;
-            if ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
-                loaiMenu = new LoaiMenu(parts[0], parts[1], parts[2]);
-            }
-
             while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
-                DanhSachNuoc nuoc = new DanhSachNuoc(parts[0], parts[1], parts[2], Double.parseDouble(parts[3])); // ID, Tên, Mô tả, Giá
-                if (loaiMenu != null) {
-                    loaiMenu.themNuoc(nuoc);
-                }
+                String[] txt = line.split(";");
+                String id = txt[0];
+                String name = txt[1];
+                String mota = txt[2];
+                double gia = Double.parseDouble(txt[3]);
+                DanhSachNuoc nuoc = new DanhSachNuoc(id, name, mota, gia);
+                loaiMenu.themNuoc(nuoc);
             }
-        } catch (IOException e) {
-            System.err.println("Lỗi khi đọc file: " + e.getMessage());
+            br.close();
+        } catch (Exception e) {
+            System.out.println("Có lỗi khi đọc file: " + fileName);
         }
+    }
 
-        return loaiMenu;
+    public void docTatCaMenu(List<LoaiMenu> danhSachLoaiMenu) {
+        String[] fileNames = {
+            "menuTra.txt", "menuCoffee.txt", "menuSinhTo.txt", 
+            "menuNuocNgot.txt", "menuSnack.txt"
+        };
+        
+        for (int i = 0; i < fileNames.length; i++) {
+            docDuLieuNuoc(fileNames[i], danhSachLoaiMenu.get(i));
+        }
     }
 }

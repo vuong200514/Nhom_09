@@ -1,5 +1,7 @@
 package taikhoan;
 
+// class abtract cua cac loai tai khoan
+
 import TrangThai.TrangThaiTK;
 
 public abstract class TaiKhoan {

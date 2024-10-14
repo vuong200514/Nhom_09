@@ -37,6 +37,8 @@ public class DanhSachNuoc {
         }
     }
 
+    
+    //chuyen cac thuoc tinh ve 1 String de ghi vao file
     @Override
     public String toString() {
         return menuItemId+";" +tenNuoc+";"+moTaNuoc+";"+giatien;

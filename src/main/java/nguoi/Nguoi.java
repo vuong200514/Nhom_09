@@ -1,5 +1,7 @@
 package nguoi;
 
+// class abtract de extends cho cac thuoc tinh nguoi khac
+
 public abstract class Nguoi {
     private String ten;
     private String email;
@@ -29,8 +31,6 @@ public abstract class Nguoi {
         this.SDT = SDT;
     }
 
-    
-    
     public Nguoi(String ten, String email, String sdt) {
         this.ten = ten;
         this.email = email;
