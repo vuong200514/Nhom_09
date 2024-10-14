@@ -78,7 +78,7 @@ public class Main {
                     System.out.println("3. Quản lý bàn");
                     System.out.println("4. Hiển thị doanh thu");
                     System.out.println("5. Reset doanh thu");
-                    System.out.println("6. Tính lương cho nhân ");
+                    System.out.println("6. Tính lương cho nhân viên");
                     System.out.println("0. Thoát");
                     System.out.print("Chọn chức năng: ");
                     choice = Integer.parseInt(sc.nextLine());
@@ -136,8 +136,8 @@ public class Main {
                                 order.taoOrderMoi(sc, leTan, menuchinh);
                                 break;
                             case 4:
-                                for (NhanVien nhanVienItem : danhSachNhanVien) {
-                                    nhanVienItem.linhLuong();
+                                for (NhanVien nv : danhSachNhanVien) {
+                                    nv.linhLuong();
                                 }
                                 break;
                             case 0:

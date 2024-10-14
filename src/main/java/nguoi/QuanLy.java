@@ -36,11 +36,21 @@ public class QuanLy extends NhanVien {
 
     public void tinhLuongChoNhanVien(List<NhanVien> danhSachNhanVien) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Nhập số ngày làm việc:");
-        int ngaylam = sc.nextInt();
-        System.out.println("Nhập thưởng:");
-        double thuong = sc.nextDouble();
-        TinhLuong tinhLuong = new TinhLuong(danhSachNhanVien);
-        tinhLuong.tinhLuong(ngaylam, thuong);
+        System.out.println("Có tháng lễ không yes/no");
+        String chon = sc.nextLine();
+        if(chon.equals("yes")){
+            System.out.println("Nhập số ngày làm việc:");
+            int ngaylam = sc.nextInt();
+            System.out.println("Nhập thưởng:");
+            double thuong = sc.nextDouble();
+            TinhLuong tinhLuong = new TinhLuong(danhSachNhanVien);
+            tinhLuong.tinhLuong(ngaylam, thuong);
+        }
+        if(chon.equals("no")){
+            System.out.println("Nhập số ngày làm việc:");
+            int ngaylam = sc.nextInt();
+            TinhLuong tinhLuong = new TinhLuong(danhSachNhanVien);
+            tinhLuong.tinhLuong(ngaylam);
+        }
     }
 }
