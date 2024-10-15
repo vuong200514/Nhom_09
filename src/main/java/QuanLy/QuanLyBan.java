@@ -13,7 +13,11 @@ public class QuanLyBan {
         System.out.println("----- Quản lý Bàn -----");
         System.out.println("1. Thêm bàn");
         System.out.println("2. Xóa bàn");
+        System.out.println("3. Cập nhập bàn");
+        System.out.println("4. Hiện danh sách bàn");
+        System.out.println("5. Cập nhập bàn");
         System.out.print("Chọn chức năng: ");
+        sc.nextLine();
         int chon = Integer.parseInt(sc.nextLine());
 
         switch (chon) {
@@ -32,6 +36,20 @@ public class QuanLyBan {
                 chiNhanh.xoaBan(maBanXoa);
                 System.out.println("Xóa bàn thành công.");
                 break;
+            case 4:
+                System.out.println("-----Danh sách các bàn ở chi nhánh "+chiNhanh.getTenChiNhanh()+"-----");
+                chiNhanh.dsBan();
+                break;
+            case 5:
+                System.out.println("Cập nhập bàn");
+                System.out.println("Nhập mã bàn: ");
+                maBan = sc.nextLine();
+                System.out.println("Nhập sức chứa: ");
+                sucChua = Integer.parseInt(sc.nextLine());
+                banMoi = new Ban(maBan, sucChua, TrangThaiBan.ConBan, gheNgoi);
+                chiNhanh.xoaBan(maBan);
+                chiNhanh.themBan(banMoi);
+                System.out.println("Cập nhập bàn thành công.");
             default:
                 System.out.println("Chức năng không hợp lệ.");
         }

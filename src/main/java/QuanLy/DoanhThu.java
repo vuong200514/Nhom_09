@@ -1,4 +1,4 @@
-package cacloaihoadon;
+package QuanLy;
 
 public class DoanhThu {
     private double doanhThu;

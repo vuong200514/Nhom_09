@@ -13,7 +13,6 @@ public class NhanVien extends Nguoi {
     public NhanVien(String maNV, String tenNV, String email, String SDT) {
         super(tenNV, email, SDT);
         this.maNhanVien = maNV;
-        this.luongCoBan = luongCoBan;
         this.trangThai = TrangThaiNhanVien.DangRanh;
     }
 
@@ -58,10 +57,9 @@ public class NhanVien extends Nguoi {
     }
     
     public void linhLuong() {
-        if (luongCoBan > 0) {
-            System.out.println("Nhân viên " + super.getTen() + " đã lĩnh lương: " + luongCoBan);
-            taiKhoan.setPass("0");
-            luongCoBan = 200000;
+        if (luong > 0) {
+            System.out.println("Nhân viên " + super.getTen() + " đã lĩnh lương: " + luong);
+            luong = 0;
         } else {
             System.out.println("Nhân viên " + super.getTen() + " đã lĩnh lương hoặc chưa có lương.");
         }
@@ -76,4 +74,9 @@ public class NhanVien extends Nguoi {
                 ", Trạng thái: " + trangThai +
                 ", Lương tháng: " + luong);
         }
+    
+    @Override
+    public String toString(){
+        return maNhanVien + ";" +ten + ";" +SDT + ";" +taiKhoan + ";" +luongCoBan + ";" +trangThai + ";" +luong;
+    }
 }

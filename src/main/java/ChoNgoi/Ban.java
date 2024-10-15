@@ -41,5 +41,10 @@ public class Ban {
         this.gheNgoi = gheNgoi;
     }
     
+    public void hienthi(){
+        System.out.println("Mã bàn: "+maBan);
+        System.out.println("Số chỗ: "+soCho);
+        System.out.println("Trạng thái: "+trangThai);
+    }
     
 }

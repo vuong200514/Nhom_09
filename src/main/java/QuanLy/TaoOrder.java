@@ -1,7 +1,7 @@
 package QuanLy;
 
 import cacloaihoadon.Order;
-import cacloaihoadon.DoanhThu;
+import QuanLy.DoanhThu;
 import java.util.*;
 import nguoi.NhanVienOrder;
 import menu.Menu;
@@ -16,10 +16,11 @@ public class TaoOrder {
         this.doanhThu = doanhThu;
     }
 
-    public void taoOrderMoi(Scanner sc, NhanVienOrder leTan, Menu menu) {
+    public void taoOrderMoi(Scanner sc, Menu menu) {
         System.out.println("----- Tạo Order mới -----");
         while(true){
             System.out.println("Nhập ID order: ");
+            sc.nextLine();
             String orderId = sc.nextLine();
             menu.inMenu();
             Order order = new Order(orderId);
@@ -69,6 +70,7 @@ public class TaoOrder {
             String xacnhan = sc.nextLine();
             if(xacnhan.equals("yes")){
                 doanhThu.capNhatDoanhThu(order.tinhTongTien());
+                System.out.println("Đã xác nhận đơn hàng vui lòng đợi trong giây lát");
                 break;
             }
             else{

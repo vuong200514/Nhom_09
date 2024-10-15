@@ -3,7 +3,9 @@ import ChoNgoi.*;
 import TrangThai.*;
 import cacloaihoadon.Order;
 import java.util.List;
+import java.util.Scanner;
 import menu.DanhSachNuoc;
+import menu.Menu;
 import taikhoan.Guest;
 import taikhoan.TaiKhoan;
 
@@ -44,37 +46,73 @@ public class KhachHang extends Nguoi {
     }
 
     //goi order voi nhan vien order va co danh sach cac mon da goi
-    public void goiOrder(NhanVienOrder nhanVienOrder, String orderId, List<DanhSachNuoc> dsNuoc) {
-        if (nhanVienOrder != null) {
-            Order order = nhanVienOrder.taoOrder(orderId, dsNuoc);
-            System.out.println("Khách hàng " + this.getTen() + " đã gọi order: " + orderId);
-            order.printOrder();
-        } else {
-            System.out.println("Không thể gọi order. Nhân viên order không tồn tại.");
+    public void goiOrder(Scanner sc, List<NhanVienOrder> danhSachNhanVienOrder, Menu menu) throws InterruptedException {
+        while (true) {
+            int check=0;
+            for (NhanVienOrder nhanVienOrder : danhSachNhanVienOrder){
+            nhanVienOrder.hienthi();
+            }
+            System.out.println("Nhập mã nhân viên bạn muốn chọn");
+            sc.nextLine();
+            String maNhanVien = sc.nextLine();
+            for (NhanVienOrder nhanVienOrder : danhSachNhanVienOrder){
+                if(nhanVienOrder.getMaNhanVien().equals(maNhanVien)&&nhanVienOrder.getTrangThai().equals(TrangThaiNhanVien.DangRanh)){
+                    System.out.println("Nhân viên "+nhanVienOrder.getTen()+" đang đến vui lòng đợi trong giây lát");
+                    check = 1;
+                    break;
+                } else {
+                    System.out.println("Nhân viên đang bận vui lòng chọn nhân viên khác");
+                }
+            }
+            if(check==1){
+                break;
+            }
         }
     }
     
-    public void goiNhanVienOrder(List<NhanVienOrder> danhSachNhanVienOrder, String maNhanVien){
+    public void goiNhanVienOrder(Scanner sc, List<NhanVienOrder> danhSachNhanVienOrder){
+        sc.nextLine();
+        for (NhanVienOrder nhanVienOrder : danhSachNhanVienOrder){
+            nhanVienOrder.hienthi();
+        }
+        System.out.println("Nhập mã nhân viên");
+        String maNhanVien = sc.nextLine();
         for (NhanVienOrder nhanVienOrder : danhSachNhanVienOrder){
             if(nhanVienOrder.getMaNhanVien().equals(maNhanVien)){
-                if(nhanVienOrder.getTrangThai().equals(TrangThaiNhanVien.DangRanh)){
+                try {
+                    if(nhanVienOrder.getTrangThai().equals(TrangThaiNhanVien.DangRanh)){
+                    Thread.sleep(2000);
                     System.out.println("Nhân Viên: "+nhanVienOrder.getTen()+" đang tới");
+                    nhanVienOrder.setTrangThai(TrangThaiNhanVien.DangBan);
                 }
                 else{
                     System.out.println("Nhân Viên: "+nhanVienOrder.getTen()+" đang bận");
+                }
+                } catch (InterruptedException e) {
                 }
             }
         }
     }
     
-    public void goiNhanVien(List<NhanVienPhaChe> danhSachNhanVienPhaChe, String maNhanVien){
+    public void goiNhanVienPhaChe(Scanner sc, List<NhanVienPhaChe> danhSachNhanVienPhaChe){
+        for (NhanVienPhaChe nhanVienPhaChe : danhSachNhanVienPhaChe){
+            nhanVienPhaChe.hienthi();
+        }
+        System.out.println("Nhập mã nhân viên");
+        sc.nextLine();
+        String maNhanVien = sc.nextLine();
         for (NhanVienPhaChe nhanVienPhaChe : danhSachNhanVienPhaChe){
             if(nhanVienPhaChe.getMaNhanVien().equals(maNhanVien)){
-                if(nhanVienPhaChe.getTrangThai().equals(TrangThaiNhanVien.DangRanh)){
+                try {
+                    if(nhanVienPhaChe.getTrangThai().equals(TrangThaiNhanVien.DangRanh)){
+                    Thread.sleep(2000);
                     System.out.println("Nhân Viên: "+nhanVienPhaChe.getTen()+" đang tới");
+                    nhanVienPhaChe.setTrangThai(TrangThaiNhanVien.DangBan);
                 }
                 else{
                     System.out.println("Nhân Viên: "+nhanVienPhaChe.getTen()+" đang bận");
+                }
+                } catch (InterruptedException e) {
                 }
             }
         }

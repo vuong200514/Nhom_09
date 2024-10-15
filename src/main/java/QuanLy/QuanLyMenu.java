@@ -14,6 +14,7 @@ public class QuanLyMenu {
         System.out.println("2. Xóa món");
         System.out.println("3. Hiện thị menu");
         System.out.print("Chọn chức năng: ");
+        sc.nextLine();
         int chon = Integer.parseInt(sc.nextLine());
 
         switch (chon) {

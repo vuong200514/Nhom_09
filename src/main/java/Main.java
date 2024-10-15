@@ -6,15 +6,17 @@ import nguoi.*;
 import QuanNuoc.*;
 import java.io.*;
 import java.util.*;
-import cacloaihoadon.DoanhThu;
+import QuanLy.DoanhThu;
+import ChoNgoi.*;
 
 public class Main {
-    public static void main(String[] args) throws UnsupportedEncodingException {
+    public static void main(String[] args) throws UnsupportedEncodingException, InterruptedException {
         System.setOut(new PrintStream(System.out, true, "UTF-8"));
         Scanner sc = new Scanner(System.in);
         DoanhThu doanhThu = new DoanhThu();
         QuanLyChiNhanh qlcn = new QuanLyChiNhanh();
         QuanLyMenu qlmenu = new QuanLyMenu();
+        QuanLyNhanSu qlns = new QuanLyNhanSu();
         QuanLyBan qlb = new QuanLyBan();
         TaoOrder order = new TaoOrder(doanhThu);
         LayDuLieu layDuLieu = new LayDuLieu();
@@ -38,7 +40,7 @@ public class Main {
         }
         
         //Tai khoan nhan vien + quan ly nhan vien + cai nay co 1 nen khoi tao = main
-        Admin admin = new Admin("admin", "123admin123", "192.168.1.1", TrangThaiTK.Offline);
+        Admin admin = new Admin("admin", "1", "192.168.1.1", TrangThaiTK.Offline);
         QuanLy quanLy = new QuanLy("Owner","Đào Mạnh Vương", "vuong200514@gmail.com", "0987654321",admin);
         TaiKhoanNhanVien taiKhoanNhanVien = new TaiKhoanNhanVien("mod1", "pass123", "123 Main St", TrangThaiTK.Offline);
         
@@ -53,11 +55,13 @@ public class Main {
         for(NhanVienPhaChe nvpc : danhSachNhanVienPhaChe){
             danhSachNhanVien.add(nvpc);
         }
-        
         quanLy.setDanhSachNhanVien(danhSachNhanVien);
-        Guest khach = new Guest("vuong2005", "hellokitty", "Ha Dong", TrangThaiTK.Offline);
-        KhachHang Hung = new KhachHang("NguyenHuuHung", "Nguyễn Hữu Hưng", "hhh@gmail.com", "098765432",khach);
+        
+        Guest khach = new Guest("vuong2005", "1", "Ha Dong", TrangThaiTK.Offline);
+        KhachHang khach1 = new KhachHang("NguyenHuuHung", "Nguyễn Hữu Hưng", "hhh@gmail.com", "098765432",khach);
 
+        //Dang ki tai khoan
+        
         // Dang nhap tai khoan
         boolean isLoggedIn = false;
         while (!isLoggedIn) {
@@ -76,8 +80,7 @@ public class Main {
                     System.out.println("3. Quản lý bàn");
                     System.out.println("4. Hiển thị doanh thu");
                     System.out.println("5. Reset doanh thu");
-                    System.out.println("6. Tính lương cho nhân viên");
-                    System.out.println("7. Quản lý nhân sự");
+                    System.out.println("6. Quản lý nhân sự");
                     System.out.println("0. Thoát");
                     System.out.print("Chọn chức năng: ");
                     choice = sc.nextInt();
@@ -99,11 +102,8 @@ public class Main {
                             doanhThu.resetDoanhThu();
                             break;
                         case 6:
-                            quanLy.tinhLuongChoNhanVien(danhSachNhanVien);
-                            break;
-                        case 7:
-                            quanLy.timKiemNhanVien(danhSachNhanVien);
-                            break;
+                           qlns.quanLyNhanSu(sc, quanLy, danhSachNhanVien);
+                           break;
                         case 0:
                             admin.setTrangThai(TrangThaiTK.Offline);
                             System.out.println("Thoát chương trình quản lý.");
@@ -118,7 +118,7 @@ public class Main {
                 taiKhoanNhanVien.setTrangThai(TrangThaiTK.Online);
                 int choice;
                     do {
-                        System.out.println("----- Quản lý quán BlackPink Coffee -----");
+                        System.out.println("----- Quản lý cho nhân viên BlackPink Coffee -----");
                         System.out.println("1. Quản lý menu");
                         System.out.println("2. Quản lý bàn");
                         System.out.println("3. Nhận order");
@@ -135,7 +135,7 @@ public class Main {
                                 qlb.quanLyBan(sc, ChiNhanhChinh);
                                 break;
                             case 3:
-                                order.taoOrderMoi(sc, danhSachNhanVienOrder.get(0), menuchinh);
+                                order.taoOrderMoi(sc, menuchinh);
                                 break;
                             case 4:
                                 for (NhanVien nv : danhSachNhanVien) {
@@ -157,23 +157,60 @@ public class Main {
                     do {
                         System.out.println("----- Chào mừng đến quán BlackPink Coffee -----");
                         System.out.println("1. Gọi order");
-                        System.out.println("2. Gọi nhân viên");
-                        System.out.println("3. Đặt bàn");
+                        System.out.println("2. Gọi nhân viên Order");
+                        System.out.println("3. Gọi nhân viên Pha Chế");
+                        System.out.println("4. Đặt bàn");
+                        System.out.println("5. Trả bàn");
                         System.out.println("0. Thoát");
                         System.out.print("Chọn chức năng: ");
                         choice = sc.nextInt();
 
                         switch (choice) {
                             case 1:
-                                order.taoOrderMoi(sc, danhSachNhanVienOrder.get(0), menuchinh);
+                                khach1.goiOrder(sc, danhSachNhanVienOrder, menuchinh);
                                 break;
                             case 2:
+                                khach1.goiNhanVienOrder(sc, danhSachNhanVienOrder);
                                 break;
                             case 3:
-                                
+                                khach1.goiNhanVienPhaChe(sc, danhSachNhanVienPhaChe);
+                                break;
+                            case 4:
+                                int check=0;
+                                System.out.println("Nhập số chỗ");
+                                int soCho = sc.nextInt();
+                                ChiNhanhChinh.dsBan();
+                                System.out.println("Nhập mã bàn muốn chọn");
+                                String maBan = sc.nextLine();
+                                for (Ban ban : ChiNhanhChinh.getDanhSachBan()){
+                                    if (ban.getMaBan().equals(maBan)){
+                                        khach1.datBan(soCho, ban);
+                                        check = 1;
+                                        break;
+                                    }
+                                }
+                                if (check==0) {
+                                    System.out.println("Không tìm thấy bàn");
+                                }
+                                break;
+                            case 5:
+                                check=0;
+                                ChiNhanhChinh.dsBan();
+                                System.out.println("Nhập mã bàn muốn chọn");
+                                maBan = sc.nextLine();
+                                for (Ban ban : ChiNhanhChinh.getDanhSachBan()){
+                                    if (ban.getMaBan().equals(maBan)){
+                                        khach1.traBan(ban);
+                                        check = 1;
+                                        break;
+                                    }
+                                }
+                                if (check==0) {
+                                    System.out.println("Không tìm thấy bàn");
+                                }
                                 break;
                             case 0:
-                                Hung.getTaiKhoan().setTrangThai(TrangThaiTK.Online);
+                                khach1.getTaiKhoan().setTrangThai(TrangThaiTK.Online);
                                 System.out.println("Thoát chương trình.");
                                 break;
                             default:

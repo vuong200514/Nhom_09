@@ -80,22 +80,24 @@ public class QuanLy extends NhanVien {
             tl.tinhLuong(danhSachNhanVien, thuong);
         }
         if(chon.equals("no")){
-            System.out.println("Nhập số ngày làm việc:");
-            int ngaylam = sc.nextInt();
             tl.tinhLuong(danhSachNhanVien);
         }
     }
     
     public void timKiemNhanVien(List<NhanVien> danhSachNhanVien) {
         Scanner sc = new Scanner(System.in);
-        String maNhanVien = null;
+        int check = 0;
         System.out.println("Nhập mã nhân viên cần tìm");
-        maNhanVien = sc.nextLine();
+        String maNhanVien = sc.nextLine();
         for (NhanVien nv : danhSachNhanVien){
             if(maNhanVien.equals(nv.getMaNhanVien())){
                 nv.hienthi();
+                check=1;
                 break;
             }
+        }
+        if(check==0){
+            System.out.println("Không tìm thấy nhân viên có mã: "+maNhanVien);
         }
     }
 }
