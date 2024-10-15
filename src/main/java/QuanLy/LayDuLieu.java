@@ -100,8 +100,4 @@ public class LayDuLieu {
             System.out.println("Có lỗi khi đọc file: " + fileName);
         }
     }
-
-    
-        Guest khach = new Guest("vuong2005", "hellokitty", "Ha Dong", TrangThaiTK.Offline);
-        KhachHang Hung = new KhachHang("NguyenHuuHung", "Nguyễn Hữu Hưng", "hhh@gmail.com", "098765432",khach);
 }

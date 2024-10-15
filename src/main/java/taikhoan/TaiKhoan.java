@@ -7,7 +7,6 @@ import TrangThai.TrangThaiTK;
 public abstract class TaiKhoan {
     private String id;
     private String pass;
-    private String diaChi;
     private TrangThaiTK trangThai;
 
     public String getId() {
@@ -26,14 +25,6 @@ public abstract class TaiKhoan {
         this.pass = pass;
     }
 
-    public String getDiaChi() {
-        return diaChi;
-    }
-
-    public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
-    }
-
     public TrangThaiTK getTrangThai() {
         return trangThai;
     }
@@ -42,11 +33,9 @@ public abstract class TaiKhoan {
         this.trangThai = trangThai;
     }
 
-    public TaiKhoan(String id, String pass, String diaChi, TrangThaiTK trangThai) {
+    public TaiKhoan(String id, String pass) {
         this.id = id;
         this.pass = pass;
-        this.diaChi = diaChi;
-        this.trangThai = trangThai;
     }
 
     public abstract boolean dangNhap(String id, String pass);

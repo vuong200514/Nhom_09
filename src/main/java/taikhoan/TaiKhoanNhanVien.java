@@ -4,8 +4,8 @@ import TrangThai.TrangThaiTK;
 
 public class TaiKhoanNhanVien extends TaiKhoan {
     
-    public TaiKhoanNhanVien(String id, String pass, String diaChi, TrangThaiTK trangThai) {
-        super(id, pass, diaChi, trangThai);
+    public TaiKhoanNhanVien(String id, String pass) {
+        super(id, pass);
     }
 
     @Override

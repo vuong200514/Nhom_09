@@ -8,6 +8,7 @@ import java.io.*;
 import java.util.*;
 import QuanLy.DoanhThu;
 import ChoNgoi.*;
+import Swing.*;
 
 public class Main {
     public static void main(String[] args) throws UnsupportedEncodingException, InterruptedException {
@@ -20,7 +21,12 @@ public class Main {
         QuanLyBan qlb = new QuanLyBan();
         TaoOrder order = new TaoOrder(doanhThu);
         LayDuLieu layDuLieu = new LayDuLieu();
-        
+        DangKi dangKi = new DangKi();
+        dangKi.setVisible(true);
+        while (dangKi.isVisible()) {
+            Thread.sleep(1000);
+        }
+
         // Tao Quan cafe + chi nhanh chinh
         BlackPink_Coffe BlackPink = new BlackPink_Coffe("My BlackPink");
         ChiNhanh ChiNhanhChinh = new ChiNhanh("Đại Học Phenikaa", "Hà Đông");
@@ -40,9 +46,9 @@ public class Main {
         }
         
         //Tai khoan nhan vien + quan ly nhan vien + cai nay co 1 nen khoi tao = main
-        Admin admin = new Admin("admin", "1", "192.168.1.1", TrangThaiTK.Offline);
+        Admin admin = new Admin("admin", "1");
         QuanLy quanLy = new QuanLy("Owner","Đào Mạnh Vương", "vuong200514@gmail.com", "0987654321",admin);
-        TaiKhoanNhanVien taiKhoanNhanVien = new TaiKhoanNhanVien("mod1", "pass123", "123 Main St", TrangThaiTK.Offline);
+        TaiKhoanNhanVien taiKhoanNhanVien = new TaiKhoanNhanVien("mod1", "pass123");
         
         //Danh sach nhan vien
         
@@ -57,8 +63,10 @@ public class Main {
         }
         quanLy.setDanhSachNhanVien(danhSachNhanVien);
         
-        Guest khach = new Guest("vuong2005", "1", "Ha Dong", TrangThaiTK.Offline);
+        Guest khach = new Guest("vuong2005", "1");
         KhachHang khach1 = new KhachHang("NguyenHuuHung", "Nguyễn Hữu Hưng", "hhh@gmail.com", "098765432",khach);
+        Guest guest = new Guest(dangKi.getTaiKhoan(), dangKi.getMatKhau());
+        System.out.println("Tai khoan da nhap o Swing: "+dangKi.getTaiKhoan());
 
         //Dang ki tai khoan
         
@@ -151,7 +159,7 @@ public class Main {
                         }
                     } while (choice != 0);
             }
-            else if (khach.dangNhap(id, pass)) {
+            else if (guest.dangNhap(id, pass)) {
                 isLoggedIn = true;
                 int choice;
                     do {

@@ -3,20 +3,11 @@ package taikhoan;
 import TrangThai.TrangThaiTK;
 
 public class Guest extends TaiKhoan {
-    private String diaChi;
 
-    public Guest(String id, String pass, String diaChi, TrangThaiTK trangThai) {
-        super(id, pass, null, trangThai);
-        this.diaChi = diaChi;
+    public Guest(String id, String pass) {
+        super(id, pass);
     }
 
-    public String getDiaChi() {
-        return diaChi;
-    }
-
-    public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
-    }
     
     @Override
     public boolean dangNhap(String id, String pass) {

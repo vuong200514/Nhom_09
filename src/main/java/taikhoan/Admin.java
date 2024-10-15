@@ -4,8 +4,8 @@ import TrangThai.TrangThaiTK;
 
 public class Admin extends TaiKhoan {
 
-    public Admin(String id, String pass, String ip, TrangThaiTK trangThai) {
-        super(id, pass, ip, trangThai);
+    public Admin(String id, String pass) {
+        super(id, pass);
     }
 
     @Override
