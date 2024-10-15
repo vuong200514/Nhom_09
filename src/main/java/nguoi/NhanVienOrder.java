@@ -3,12 +3,14 @@ package nguoi;
 import cacloaihoadon.Order;
 import menu.DanhSachNuoc;
 import java.util.List;
-import taikhoan.TaiKhoan;
+import taikhoan.*;
 
 public class NhanVienOrder extends NhanVien {
+    private TaiKhoanNhanVien taiKhoanNhanVien;
 
-    public NhanVienOrder(String maNV, TaiKhoan TK, String tenNV, String email, String SDT) {
-        super(maNV, TK, tenNV, email, SDT);
+    public NhanVienOrder(String maNV, String tenNV, String email, String SDT, TaiKhoanNhanVien taiKhoan) {
+        super(maNV, tenNV, email, SDT);
+        this.taiKhoanNhanVien = taiKhoan;
     }
     
 

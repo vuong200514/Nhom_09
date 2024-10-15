@@ -1,8 +1,6 @@
 package nguoi;
 import ChoNgoi.*;
-import TrangThai.LoaiChoNgoi;
-import TrangThai.TrangThaiBan;
-import TrangThai.TrangThaiTK;
+import TrangThai.*;
 import cacloaihoadon.Order;
 import java.util.List;
 import menu.DanhSachNuoc;
@@ -53,6 +51,32 @@ public class KhachHang extends Nguoi {
             order.printOrder();
         } else {
             System.out.println("Không thể gọi order. Nhân viên order không tồn tại.");
+        }
+    }
+    
+    public void goiNhanVienOrder(List<NhanVienOrder> danhSachNhanVienOrder, String maNhanVien){
+        for (NhanVienOrder nhanVienOrder : danhSachNhanVienOrder){
+            if(nhanVienOrder.getMaNhanVien().equals(maNhanVien)){
+                if(nhanVienOrder.getTrangThai().equals(TrangThaiNhanVien.DangRanh)){
+                    System.out.println("Nhân Viên: "+nhanVienOrder.getTen()+" đang tới");
+                }
+                else{
+                    System.out.println("Nhân Viên: "+nhanVienOrder.getTen()+" đang bận");
+                }
+            }
+        }
+    }
+    
+    public void goiNhanVien(List<NhanVienPhaChe> danhSachNhanVienPhaChe, String maNhanVien){
+        for (NhanVienPhaChe nhanVienPhaChe : danhSachNhanVienPhaChe){
+            if(nhanVienPhaChe.getMaNhanVien().equals(maNhanVien)){
+                if(nhanVienPhaChe.getTrangThai().equals(TrangThaiNhanVien.DangRanh)){
+                    System.out.println("Nhân Viên: "+nhanVienPhaChe.getTen()+" đang tới");
+                }
+                else{
+                    System.out.println("Nhân Viên: "+nhanVienPhaChe.getTen()+" đang bận");
+                }
+            }
         }
     }
     

@@ -25,6 +25,8 @@ public class Main {
         BlackPink.themChiNhanh(ChiNhanhChinh);
         
         List<NhanVien> danhSachNhanVien = new ArrayList<>();
+        List<NhanVienOrder> danhSachNhanVienOrder = new ArrayList<>();
+        List<NhanVienPhaChe> danhSachNhanVienPhaChe = new ArrayList<>();
         List<LoaiMenu> danhSachLoaiMenu = new ArrayList<>();
         
         // Tao menu cac loai nuoc
@@ -35,14 +37,23 @@ public class Main {
             menuchinh.themLoaiMenu(menu);
         }
         
-        //Tai khoan nhan vien + quan ly nhan vien
+        //Tai khoan nhan vien + quan ly nhan vien + cai nay co 1 nen khoi tao = main
         Admin admin = new Admin("admin", "123admin123", "192.168.1.1", TrangThaiTK.Offline);
-        QuanLy quanLy = new QuanLy("Owner", admin, "Đào Mạnh Vương", "vuong200514@gmail.com", "0987654321",admin);
-        TaiKhoanNhanVien nhanVien = new TaiKhoanNhanVien("mod1", "pass123", "123 Main St", TrangThaiTK.Offline);
-        NhanVienOrder Chien = new NhanVienOrder("1", nhanVien, "Nguyễn Văn Chiến", "Chienmauchien12@gmail.com", "123456789");
-        NhanVienPhaChe Hien = new NhanVienPhaChe("1", nhanVien, "Nguyễn Hữu Hiển", "Hungchicken12@gmail.com", "123456789");
-        danhSachNhanVien.add(Chien);
-        danhSachNhanVien.add(Hien);
+        QuanLy quanLy = new QuanLy("Owner","Đào Mạnh Vương", "vuong200514@gmail.com", "0987654321",admin);
+        TaiKhoanNhanVien taiKhoanNhanVien = new TaiKhoanNhanVien("mod1", "pass123", "123 Main St", TrangThaiTK.Offline);
+        
+        //Danh sach nhan vien
+        
+        layDuLieu.docNhanVienOrder("nhanVienOrder.txt", danhSachNhanVienOrder, taiKhoanNhanVien);
+        layDuLieu.docNhanVienPhaChe("nhanVienPhaChe.txt", danhSachNhanVienPhaChe, taiKhoanNhanVien);
+
+        for(NhanVienOrder nvod : danhSachNhanVienOrder){
+            danhSachNhanVien.add(nvod);
+        }
+        for(NhanVienPhaChe nvpc : danhSachNhanVienPhaChe){
+            danhSachNhanVien.add(nvpc);
+        }
+        
         quanLy.setDanhSachNhanVien(danhSachNhanVien);
         Guest khach = new Guest("vuong2005", "hellokitty", "Ha Dong", TrangThaiTK.Offline);
         KhachHang Hung = new KhachHang("NguyenHuuHung", "Nguyễn Hữu Hưng", "hhh@gmail.com", "098765432",khach);
@@ -91,7 +102,7 @@ public class Main {
                             quanLy.tinhLuongChoNhanVien(danhSachNhanVien);
                             break;
                         case 7:
-                            quanLy.tinhLuongChoNhanVien(danhSachNhanVien);
+                            quanLy.timKiemNhanVien(danhSachNhanVien);
                             break;
                         case 0:
                             admin.setTrangThai(TrangThaiTK.Offline);
@@ -102,9 +113,9 @@ public class Main {
                     }
                 } while (choice != 0);
             }
-            else if (nhanVien.dangNhap(id, pass)) {
+            else if (taiKhoanNhanVien.dangNhap(id, pass)) {
                 isLoggedIn = true;
-                nhanVien.setTrangThai(TrangThaiTK.Online);
+                taiKhoanNhanVien.setTrangThai(TrangThaiTK.Online);
                 int choice;
                     do {
                         System.out.println("----- Quản lý quán BlackPink Coffee -----");
@@ -124,7 +135,7 @@ public class Main {
                                 qlb.quanLyBan(sc, ChiNhanhChinh);
                                 break;
                             case 3:
-                                order.taoOrderMoi(sc, Chien, menuchinh);
+                                order.taoOrderMoi(sc, danhSachNhanVienOrder.get(0), menuchinh);
                                 break;
                             case 4:
                                 for (NhanVien nv : danhSachNhanVien) {
@@ -132,7 +143,7 @@ public class Main {
                                 }
                                 break;
                             case 0:
-                                nhanVien.setTrangThai(TrangThaiTK.Offline);
+                                taiKhoanNhanVien.setTrangThai(TrangThaiTK.Offline);
                                 System.out.println("Thoát chương trình quản lý.");
                                 break;
                             default:
@@ -140,7 +151,7 @@ public class Main {
                         }
                     } while (choice != 0);
             }
-            else if (Hung.dangNhap(id, pass)) {
+            else if (khach.dangNhap(id, pass)) {
                 isLoggedIn = true;
                 int choice;
                     do {
@@ -154,7 +165,7 @@ public class Main {
 
                         switch (choice) {
                             case 1:
-                                order.taoOrderMoi(sc, Chien, menuchinh);
+                                order.taoOrderMoi(sc, danhSachNhanVienOrder.get(0), menuchinh);
                                 break;
                             case 2:
                                 break;

@@ -2,11 +2,16 @@ package nguoi;
 
 import cacloaihoadon.Order;
 import java.time.LocalTime;
-import taikhoan.TaiKhoan;
+import taikhoan.*;
+
+// Ý tưởng 1 cơ sở sẽ có nhiều quản lí mỗi quản lí sẽ quản lí 1 danh sách nhân viên nên chia thành phache/order
 
 public class NhanVienPhaChe extends NhanVien {
-    public NhanVienPhaChe(String maNV, TaiKhoan TKNV, String TenNV, String email, String SDT) {
-        super(maNV, TKNV, TenNV, email, SDT);
+    private TaiKhoanNhanVien taiKhoanNhanVien;
+    
+    public NhanVienPhaChe(String maNV, String TenNV, String email, String SDT, TaiKhoanNhanVien taiKhoan) {
+        super(maNV, TenNV, email, SDT);
+        this.taiKhoanNhanVien = taiKhoan;
     }
 
     public void nhanOrder(Order order) {

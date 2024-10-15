@@ -3,9 +3,9 @@ package nguoi;
 // class abtract de extends cho cac thuoc tinh nguoi khac
 
 public abstract class Nguoi {
-    private String ten;
-    private String email;
-    private String SDT;
+    String ten;
+    String email;
+    String SDT;
 
     public String getTen() {
         return ten;
