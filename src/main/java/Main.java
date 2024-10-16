@@ -24,7 +24,7 @@ public class Main {
         DangKi dangKi = new DangKi();
         dangKi.setVisible(true);
         while (dangKi.isVisible()) {
-            Thread.sleep(1000);
+            Thread.sleep(500);
         }
 
         // Tao Quan cafe + chi nhanh chinh
@@ -189,6 +189,7 @@ public class Main {
                                 int soCho = sc.nextInt();
                                 ChiNhanhChinh.dsBan();
                                 System.out.println("Nhập mã bàn muốn chọn");
+                                sc.nextLine();
                                 String maBan = sc.nextLine();
                                 for (Ban ban : ChiNhanhChinh.getDanhSachBan()){
                                     if (ban.getMaBan().equals(maBan)){

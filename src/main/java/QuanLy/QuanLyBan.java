@@ -15,7 +15,6 @@ public class QuanLyBan {
         System.out.println("2. Xóa bàn");
         System.out.println("3. Cập nhập bàn");
         System.out.println("4. Hiện danh sách bàn");
-        System.out.println("5. Cập nhập bàn");
         System.out.print("Chọn chức năng: ");
         sc.nextLine();
         int chon = Integer.parseInt(sc.nextLine());
@@ -40,7 +39,7 @@ public class QuanLyBan {
                 System.out.println("-----Danh sách các bàn ở chi nhánh "+chiNhanh.getTenChiNhanh()+"-----");
                 chiNhanh.dsBan();
                 break;
-            case 5:
+            case 3:
                 System.out.println("Cập nhập bàn");
                 System.out.println("Nhập mã bàn: ");
                 maBan = sc.nextLine();
@@ -50,6 +49,7 @@ public class QuanLyBan {
                 chiNhanh.xoaBan(maBan);
                 chiNhanh.themBan(banMoi);
                 System.out.println("Cập nhập bàn thành công.");
+                break;
             default:
                 System.out.println("Chức năng không hợp lệ.");
         }

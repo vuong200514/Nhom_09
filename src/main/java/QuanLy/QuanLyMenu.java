@@ -18,84 +18,46 @@ public class QuanLyMenu {
         int chon = Integer.parseInt(sc.nextLine());
 
         switch (chon) {
-            case 1:
-                System.out.println("Nhập loại menu\n1. Menu trà\n2. Menu cà phê\n3. Menu sinh tố\n4. Menu nước ngọt\n3. Menu snack");
-                String loaiMenuMoi = sc.nextLine();
+                case 1:
+                System.out.println("Nhập loại menu\n1. Menu trà\n2. Menu cà phê\n3. Menu sinh tố\n4. Menu nước ngọt\n5. Menu snack");
+                int loaiMenuMoi = sc.nextInt();
+                sc.nextLine();
+                System.out.println("Nhập id món: ");
+                String id = sc.nextLine();
                 System.out.println("Nhập tên món: ");
                 String ten = sc.nextLine();
                 System.out.println("Nhập mô tả: ");
                 String moTa = sc.nextLine();
                 System.out.println("Nhập giá: ");
                 double gia = Double.parseDouble(sc.nextLine());
-                DanhSachNuoc nuocMoi = new DanhSachNuoc("4", ten, moTa, gia);
+                DanhSachNuoc nuocMoi = new DanhSachNuoc(id, ten, moTa, gia);
 
                 switch (loaiMenuMoi) {
-                    case "1":
+                    case 1:
                         menu.getLoaimenu().get(0).themNuoc(nuocMoi);
-                        try{
-                            FileWriter fw = new FileWriter("menuTra.txt",true);
-                            BufferedWriter bw = new BufferedWriter(fw);
-                            bw.newLine();
-                            bw.write(nuocMoi.toString());
-                            fw.close();
-                            bw.close();
-                        }catch (Exception e){
-                        }
+                        ghiDuLieuVaoFile("menuTra.txt", nuocMoi);
                         break;
-                    case "2":
+                    case 2:
                         menu.getLoaimenu().get(1).themNuoc(nuocMoi);
-                        try{
-                            FileWriter fw = new FileWriter("menuCoffee.txt",true);
-                            BufferedWriter bw = new BufferedWriter(fw);
-                            bw.newLine();
-                            bw.write(nuocMoi.toString());
-                            fw.close();
-                            bw.close();
-                        }catch (Exception e){
-                        }
+                        ghiDuLieuVaoFile("menuCoffee.txt", nuocMoi);
                         break;
-                    case "3":
+                    case 3:
                         menu.getLoaimenu().get(2).themNuoc(nuocMoi);
-                        try{
-                            FileWriter fw = new FileWriter("menuSinhTo.txt",true);
-                            BufferedWriter bw = new BufferedWriter(fw);
-                            bw.newLine();
-                            bw.write(nuocMoi.toString());
-                            fw.close();
-                            bw.close();
-                        }catch (Exception e){
-                        }
+                        ghiDuLieuVaoFile("menuSinhTo.txt", nuocMoi);
                         break;
-                    case "4":
+                    case 4:
                         menu.getLoaimenu().get(3).themNuoc(nuocMoi);
-                        try{
-                            FileWriter fw = new FileWriter("menuNuocNgot.txt",true);
-                            BufferedWriter bw = new BufferedWriter(fw);
-                            bw.newLine();
-                            bw.write(nuocMoi.toString());
-                            fw.close();
-                            bw.close();
-                        }catch (Exception e){
-                        }
+                        ghiDuLieuVaoFile("menuNuocNgot.txt", nuocMoi);
                         break;
-                    case "5":
+                    case 5:
                         menu.getLoaimenu().get(4).themNuoc(nuocMoi);
-                        try{
-                            FileWriter fw = new FileWriter("menuSnack.txt",true);
-                            BufferedWriter bw = new BufferedWriter(fw);
-                            bw.newLine();
-                            bw.write(nuocMoi.toString());
-                            fw.close();
-                            bw.close();
-                        }catch (Exception e){
-                        }
+                        ghiDuLieuVaoFile("menuSnack.txt", nuocMoi);
                         break;
                     default:
                         System.out.println("Loại menu không hợp lệ.");
                 }
                 System.out.println("Thêm món thành công.");
                 break;
-
             case 2:
                 System.out.println("Nhập tên món cần xóa: ");
                 String tenXoa = sc.nextLine();
@@ -127,4 +89,13 @@ public class QuanLyMenu {
                 System.out.println("Chức năng không hợp lệ.");
         }
     }
+    private void ghiDuLieuVaoFile(String fileName, DanhSachNuoc nuocMoi) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName, true))) {
+            bw.write(nuocMoi.toString());
+            bw.newLine();
+        } catch (IOException e) {
+            System.out.println("Lỗi ghi file: " + e.getMessage());
+        }
+    }
+    
 }

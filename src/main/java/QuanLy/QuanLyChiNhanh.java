@@ -11,6 +11,7 @@ public class QuanLyChiNhanh {
         System.out.println("1. Thêm Chi nhánh");
         System.out.println("2. Xóa Chi nhánh");
         System.out.print("Chọn chức năng: ");
+        sc.nextLine();
         int chon = Integer.parseInt(sc.nextLine());
 
         switch (chon) {
