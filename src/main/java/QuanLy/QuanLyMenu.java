@@ -36,28 +36,31 @@ public class QuanLyMenu {
                     case 1:
                         menu.getLoaimenu().get(0).themNuoc(nuocMoi);
                         ghiDuLieuVaoFile("menuTra.txt", nuocMoi);
+                        System.out.println("Thêm món thành công.");
                         break;
                     case 2:
                         menu.getLoaimenu().get(1).themNuoc(nuocMoi);
                         ghiDuLieuVaoFile("menuCoffee.txt", nuocMoi);
+                        System.out.println("Thêm món thành công.");
                         break;
                     case 3:
                         menu.getLoaimenu().get(2).themNuoc(nuocMoi);
                         ghiDuLieuVaoFile("menuSinhTo.txt", nuocMoi);
+                        System.out.println("Thêm món thành công.");
                         break;
                     case 4:
                         menu.getLoaimenu().get(3).themNuoc(nuocMoi);
                         ghiDuLieuVaoFile("menuNuocNgot.txt", nuocMoi);
+                        System.out.println("Thêm món thành công.");
                         break;
                     case 5:
                         menu.getLoaimenu().get(4).themNuoc(nuocMoi);
                         ghiDuLieuVaoFile("menuSnack.txt", nuocMoi);
+                        System.out.println("Thêm món thành công.");
                         break;
                     default:
                         System.out.println("Loại menu không hợp lệ.");
                 }
-                System.out.println("Thêm món thành công.");
-                break;
             case 2:
                 System.out.println("Nhập tên món cần xóa: ");
                 String tenXoa = sc.nextLine();
