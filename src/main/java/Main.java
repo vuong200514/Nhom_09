@@ -31,12 +31,12 @@ public class Main {
         BlackPink_Coffe BlackPink = new BlackPink_Coffe("My BlackPink");
         ChiNhanh ChiNhanhChinh = new ChiNhanh("Đại Học Phenikaa", "Hà Đông");
         BlackPink.themChiNhanh(ChiNhanhChinh);
-        
+
         List<NhanVien> danhSachNhanVien = new ArrayList<>();
         List<NhanVienOrder> danhSachNhanVienOrder = new ArrayList<>();
         List<NhanVienPhaChe> danhSachNhanVienPhaChe = new ArrayList<>();
         List<LoaiMenu> danhSachLoaiMenu = new ArrayList<>();
-        
+
         // Tao menu cac loai nuoc
         Menu menuchinh = new Menu("1", "Menu Chính", "Menu các loại nước");
         layDuLieu.docLoaiMenu("menu.txt", danhSachLoaiMenu);
@@ -44,32 +44,31 @@ public class Main {
         for(LoaiMenu menu : danhSachLoaiMenu){
             menuchinh.themLoaiMenu(menu);
         }
-        
+
         //Tai khoan nhan vien + quan ly nhan vien + cai nay co 1 nen khoi tao = main
         Admin admin = new Admin("admin", "1");
         QuanLy quanLy = new QuanLy("Owner","Đào Mạnh Vương", "vuong200514@gmail.com", "0987654321",admin);
         TaiKhoanNhanVien taiKhoanNhanVien = new TaiKhoanNhanVien("mod1", "pass123");
-        
+
         //Danh sach nhan vien
-        
+
         layDuLieu.docNhanVienOrder("nhanVienOrder.txt", danhSachNhanVienOrder, taiKhoanNhanVien);
         layDuLieu.docNhanVienPhaChe("nhanVienPhaChe.txt", danhSachNhanVienPhaChe, taiKhoanNhanVien);
 
         for(NhanVienOrder nvod : danhSachNhanVienOrder){
             danhSachNhanVien.add(nvod);
+            nvod.setTaiKhoan(taiKhoanNhanVien);
         }
         for(NhanVienPhaChe nvpc : danhSachNhanVienPhaChe){
             danhSachNhanVien.add(nvpc);
+            nvpc.setTaiKhoan(taiKhoanNhanVien);
         }
         quanLy.setDanhSachNhanVien(danhSachNhanVien);
-        
+
         Guest khach = new Guest("vuong2005", "1");
         KhachHang khach1 = new KhachHang("NguyenHuuHung", "Nguyễn Hữu Hưng", "hhh@gmail.com", "098765432",khach);
         Guest guest = new Guest(dangKi.getTaiKhoan(), dangKi.getMatKhau());
-        System.out.println("Tai khoan da nhap o Swing: "+dangKi.getTaiKhoan());
 
-        //Dang ki tai khoan
-        
         // Dang nhap tai khoan
         boolean isLoggedIn = false;
         while (!isLoggedIn) {
@@ -129,7 +128,7 @@ public class Main {
                         System.out.println("----- Quản lý cho nhân viên BlackPink Coffee -----");
                         System.out.println("1. Quản lý menu");
                         System.out.println("2. Quản lý bàn");
-                        System.out.println("3. Nhận order");
+                        System.out.println("3. Tạo order");
                         System.out.println("4. Nhận lương");
                         System.out.println("0. Thoát");
                         System.out.print("Chọn chức năng: ");
@@ -164,11 +163,12 @@ public class Main {
                 int choice;
                     do {
                         System.out.println("----- Chào mừng đến quán BlackPink Coffee -----");
-                        System.out.println("1. Gọi order");
+                        System.out.println("1. Gọi thằng order");
                         System.out.println("2. Gọi nhân viên Order");
                         System.out.println("3. Gọi nhân viên Pha Chế");
                         System.out.println("4. Đặt bàn");
                         System.out.println("5. Trả bàn");
+                        System.out.println("6. Đặt online");
                         System.out.println("0. Thoát");
                         System.out.print("Chọn chức năng: ");
                         choice = sc.nextInt();
@@ -217,6 +217,9 @@ public class Main {
                                 if (check==0) {
                                     System.out.println("Không tìm thấy bàn");
                                 }
+                                break;
+                            case 6:
+                                order.taoOrderMoi(sc, menuchinh);
                                 break;
                             case 0:
                                 khach1.getTaiKhoan().setTrangThai(TrangThaiTK.Online);

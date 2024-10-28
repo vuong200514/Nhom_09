@@ -2,6 +2,7 @@ package menu;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Menu {
     private String menuId;
@@ -57,5 +58,27 @@ public class Menu {
         for (LoaiMenu loai : loaimenu) {
             loai.inDanhSachNuoc();
         }
+    }
+    
+    public void inMenuLoc() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Menu đã lọc: ");
+        LoaiMenu fullMenu = new LoaiMenu("Menu theo yêu khoảng giá đã chọn", "Menu đã lọc", "Danh sách các món theo nhu cầu");
+        System.out.println("Nhập giá min");
+        double min = sc.nextDouble();
+        System.out.println("Nhập giá max");
+        double max = sc.nextDouble();
+        sc.nextLine();
+        for (LoaiMenu loai : loaimenu) {
+            for(DanhSachNuoc ds : loai.getDanhSachNuoc()){
+                if(ds.getGiatien()<max && ds.getGiatien()>min){
+                   fullMenu.themNuoc(ds); 
+                }
+            }
+        }
+        for (DanhSachNuoc nuoc : fullMenu.getDanhSachNuoc()){
+            
+        }
+        fullMenu.inDanhSachNuoc();
     }
 }

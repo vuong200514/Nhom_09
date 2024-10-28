@@ -23,6 +23,12 @@ public class TaoOrder {
             sc.nextLine();
             String orderId = sc.nextLine();
             menu.inMenu();
+            System.out.println("Bạn có muốn lọc danh sách? (1. YES || 2. NO)");
+            int timkiem = sc.nextInt();
+            if(timkiem==1){
+                System.out.println("Danh sách menu sau khi sắp xếp:");
+                menu.inMenuLoc();
+            }
             Order order = new Order(orderId);
             System.out.println("Nhập số món muốn gọi: ");
             int soMon;
